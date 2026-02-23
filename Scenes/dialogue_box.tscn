@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://caxpriv3c766y"]
 
 [ext_resource type="Script" uid="uid://ctvm58p6t1fdh" path="res://Scripts/dialogue_box.gd" id="1_hygrc"]
+[ext_resource type="AudioStream" uid="uid://w0c0yf3det61" path="res://Sounds/type.ogg" id="2_l8qb8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vo4xn"]
 font_size = 26
@@ -55,3 +56,4 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_hygrc")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1694669748]
+stream = ExtResource("2_l8qb8")

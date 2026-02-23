@@ -34,6 +34,7 @@ func _process(_delta: float) -> void:
 			currentText = displayText.substr(0,textIndex)
 			$CanvasLayer/Label.text = currentText
 			newCharInText.emit()
+			$AudioStreamPlayer.play()
 		if (delta > displayTime):
 			shouldDisplay = false
 			$CanvasLayer.visible = false
