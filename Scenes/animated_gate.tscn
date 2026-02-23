@@ -55,7 +55,6 @@ metadata/_custom_type_script = "uid://cunql56gbtrm"
 libraries/ = SubResource("AnimationLibrary_aowyh")
 
 [node name="OpenArea2D" type="Area2D" parent="." unique_id=1051413205]
-visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpenArea2D" unique_id=1691717046]
@@ -68,3 +67,6 @@ shape = SubResource("RectangleShape2D_f4wf2")
 debug_color = Color(0.79643786, 0.31091034, 0.7325331, 0.41960785)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="OpenArea2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="OpenArea2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="input_event" from="OpenArea2D" to="." method="_on_area_2d_input_event"]
