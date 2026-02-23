@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://b6gmfyj42sr50" path="res://Tilesets/Grass.png" id="1_3givb"]
 [ext_resource type="Script" uid="uid://cqm34cjwc1lyy" path="res://Scripts/nivel_1.gd" id="1_epurl"]
 [ext_resource type="Texture2D" uid="uid://djft675k12co7" path="res://Tilesets/Fences.png" id="2_ecx5m"]
-[ext_resource type="PackedScene" uid="uid://by0novrk3eljo" path="res://Scenes/door.tscn" id="3_ecx5m"]
-[ext_resource type="PackedScene" uid="uid://cy6irfu2xpx63" path="res://Scenes/animated_gate.tscn" id="5_hwnlj"]
+[ext_resource type="PackedScene" uid="uid://bmkil8moafb8q" path="res://Scenes/animated_gate.tscn" id="5_hwnlj"]
+[ext_resource type="PackedScene" uid="uid://2fpcu6o3qcp0" path="res://Scenes/player.tscn" id="5_jmhww"]
+[ext_resource type="PackedScene" uid="uid://caxpriv3c766y" path="res://Scenes/dialogue_box.tscn" id="6_jmhww"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_820xk"]
 texture = ExtResource("1_3givb")
@@ -431,41 +432,6 @@ texture = ExtResource("2_ecx5m")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_l2piy")
 
-[sub_resource type="Animation" id="Animation_jmhww"]
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.26666668, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [1, 1, 3, 2, 0]
-}
-
-[sub_resource type="Animation" id="Animation_22i05"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [1, 3, 2, 0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kyajb"]
-_data = {
-&"RESET": SubResource("Animation_jmhww"),
-&"open": SubResource("Animation_22i05")
-}
-
 [node name="Nivel1" type="Node2D" unique_id=1398036209]
 script = ExtResource("1_epurl")
 
@@ -477,16 +443,16 @@ tile_set = SubResource("TileSet_l2piy")
 tile_map_data = PackedByteArray("AAD2//v/AAABAAAAAAD2//z/AAAAAAEAAAD2//3/AAAAAAEAAAD2//7/AAAAAAEAAAD2////AAAAAAEAAAD2/wAAAAAAAAEAAAD2/wEAAAAAAAEAAAD2/wIAAAAAAAEAAAD2/wMAAAAAAAEAAAD2/wQAAAAAAAEAAAD2/wUAAAAAAAEAAAD2/wYAAAAAAAEAAAD2/wcAAAAAAAEAAAD2/wgAAAAAAAEAAAD2/wkAAAAAAAEAAAD2/woAAAAAAAEAAAD2/wsAAAABAAIAAAADAPv/AAADAAAAAAADAAsAAAADAAIAAAD3/wsAAAACAAMAAAD4/wsAAAACAAMAAAD5/wsAAAACAAMAAAD6/wsAAAACAAMAAAD7/wsAAAACAAMAAAD8/wsAAAACAAMAAAD9/wsAAAACAAMAAAD+/wsAAAACAAMAAAD//wsAAAACAAMAAAAAAAsAAAACAAMAAAABAAsAAAACAAMAAAACAAsAAAACAAMAAAD3//v/AAACAAMAAAD4//v/AAACAAMAAAD5//v/AAACAAMAAAD6//v/AAACAAMAAAD7//v/AAACAAMAAAD8//v/AAACAAMAAAD9//v/AAACAAMAAAD+//v/AAACAAMAAAD///v/AAACAAMAAAAAAPv/AAACAAMAAAABAPv/AAACAAMAAAACAPv/AAACAAMAAAADAPz/AAAAAAEAAAADAP3/AAAAAAEAAAADAP7/AAAAAAEAAAADAP//AAAAAAEAAAADAAAAAAAAAAEAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAADAAMAAAAAAAEAAAADAAQAAAAAAAEAAAADAAUAAAAAAAEAAAADAAYAAAAAAAEAAAADAAcAAAAAAAEAAAADAAgAAAAAAAEAAAADAAkAAAAAAAEAAAADAAoAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_3wii6")
 
-[node name="Door" parent="." unique_id=91538309 instance=ExtResource("3_ecx5m")]
-position = Vector2(-48, 0)
-frame = 1
-active = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Door" unique_id=114782114]
-libraries/ = SubResource("AnimationLibrary_kyajb")
-
 [node name="AnimatedGate" parent="." unique_id=2047117113 instance=ExtResource("5_hwnlj")]
-position = Vector2(-107, 1)
+position = Vector2(-46, 0)
 active = true
 
-[connection signal="entered" from="Door" to="." method="_on_door_entered"]
+[node name="Player" parent="." unique_id=1915309905 instance=ExtResource("5_jmhww")]
+z_index = 1
+position = Vector2(-46, 119)
+
+[node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("6_jmhww")]
+top_level = true
+z_index = 1
+
+[connection signal="entered" from="AnimatedGate" to="." method="_on_animated_gate_entered"]

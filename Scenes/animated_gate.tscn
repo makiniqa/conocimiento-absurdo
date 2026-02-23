@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cy6irfu2xpx63"]
+[gd_scene format=3 uid="uid://bmkil8moafb8q"]
 
 [ext_resource type="Texture2D" uid="uid://ba67opm8juluv" path="res://Tilesets/Doors.png" id="1_f4wf2"]
 [ext_resource type="Script" uid="uid://cunql56gbtrm" path="res://Scripts/door.gd" id="2_b8h4h"]
