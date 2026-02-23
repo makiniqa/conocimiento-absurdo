@@ -180,6 +180,7 @@ _data = {
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_vgqql"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1915309905]
+collision_layer = 3
 motion_mode = 1
 script = ExtResource("1_cvnsp")
 
