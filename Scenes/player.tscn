@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://2fpcu6o3qcp0"]
 
+[ext_resource type="Script" uid="uid://c84bk4knw7j8m" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bcppcyf722lba" path="res://Characters/Basic Charakter Spritesheet.png" id="1_v0iea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
@@ -179,6 +180,8 @@ _data = {
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_vgqql"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1915309905]
+motion_mode = 1
+script = ExtResource("1_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=113555521]
 texture = ExtResource("1_v0iea")
@@ -196,3 +199,7 @@ autoplay = &"idle_down"
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1049462957]
 tree_root = SubResource("AnimationNodeBlendTree_vgqql")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1976611127]
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
