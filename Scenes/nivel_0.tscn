@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c7ugg4fsafhb5"]
+
+[ext_resource type="Texture2D" uid="uid://l4wtivhr3kxw" path="res://Tilesets/Water.png" id="1_yjwmx"]
+
+[node name="Menu" type="Control" unique_id=1139996864]
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=718718782]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_yjwmx")
+
+[node name="Label" type="Label" parent="." unique_id=1349152562]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16
+text = "jueguito uwu"
+
+[node name="MenuButton" type="MenuButton" parent="." unique_id=68554837]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 31.0
+offset_right = 114.0
+offset_bottom = 62.0
+text = "partida nueva"
