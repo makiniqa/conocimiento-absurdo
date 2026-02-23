@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://c7ugg4fsafhb5"]
+[gd_scene format=3 uid="uid://cs3cabx0irftc"]
 
+[ext_resource type="Script" uid="uid://d0w0kc8d5myan" path="res://Scripts/nivel_0.gd" id="1_820xk"]
 [ext_resource type="Texture2D" uid="uid://l4wtivhr3kxw" path="res://Tilesets/Water.png" id="1_yjwmx"]
 [ext_resource type="Script" uid="uid://1mtyqshbwaky" path="res://Scripts/menu_button.gd" id="2_820xk"]
 
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_820xk")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=718718782]
 layout_mode = 0
@@ -32,7 +34,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 72
 text = "jueguito uwu"
 
-[node name="MenuButton" type="MenuButton" parent="." unique_id=68554837]
+[node name="StartButton" type="MenuButton" parent="." unique_id=68554837]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -68,3 +70,5 @@ theme_override_colors/font_color = Color(0.8745098, 0.1254902, 0.8745098, 1)
 theme_override_colors/font_hover_color = Color(0.8745098, 0.1254902, 0.6431373, 1)
 theme_override_font_sizes/font_size = 40
 text = "Cargar"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
