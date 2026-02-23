@@ -51,3 +51,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 				
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	isInsideInteractRadius = false
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)

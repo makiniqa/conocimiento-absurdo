@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c7ugg4fsafhb5"]
 
 [ext_resource type="Texture2D" uid="uid://l4wtivhr3kxw" path="res://Tilesets/Water.png" id="1_yjwmx"]
+[ext_resource type="Script" uid="uid://1mtyqshbwaky" path="res://Scripts/menu_button.gd" id="2_820xk"]
 
 [node name="Menu" type="Control" unique_id=1139996864]
 z_index = 2
@@ -48,6 +49,7 @@ theme_override_colors/font_color = Color(0.8745098, 0.1254902, 0.8745098, 1)
 theme_override_colors/font_hover_color = Color(0.8745098, 0.1254902, 0.6431373, 1)
 theme_override_font_sizes/font_size = 40
 text = "Empezar"
+script = ExtResource("2_820xk")
 
 [node name="MenuButton2" type="MenuButton" parent="." unique_id=1354175658]
 layout_mode = 1
