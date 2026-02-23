@@ -3,6 +3,7 @@ extends Node
 var levels = []
 var current_level
 
+signal level_changed
 signal menu_enter
 signal menu_exit
 
@@ -17,6 +18,19 @@ func _ready() -> void:
 	add_child(load(levels[0]).instantiate())
 	menu_enter.emit()
 
-func _on_level_change(level) -> void:
+func change_level(level) -> void:
 	if current_level == 0:
 		menu_exit.emit()
+	for children in get_children(true):
+		remove_child(children)
+		children.queue_free()
+	if level == 0:
+		menu_enter.emit()
+	current_level = level
+	add_child(load(levels[current_level]).instantiate())
+	level_changed.emit()
+	
+func _process(_delta: float) -> void:
+	for child in get_children(true):
+		if child.shouldChangeLevel():
+			change_level(child.getNextLevel())
