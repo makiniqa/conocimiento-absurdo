@@ -432,6 +432,67 @@ texture = ExtResource("2_ecx5m")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_l2piy")
 
+[sub_resource type="Animation" id="Animation_22i05"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-46, 166)]
+}
+
+[sub_resource type="Animation" id="Animation_jmhww"]
+resource_name = "enter_level"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-46, 166), Vector2(-46, 72)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_22i05"]
+_data = {
+&"RESET": SubResource("Animation_22i05"),
+&"enter_level": SubResource("Animation_jmhww")
+}
+
 [node name="Nivel1" type="Node2D" unique_id=1398036209]
 script = ExtResource("1_epurl")
 
@@ -449,10 +510,15 @@ active = true
 
 [node name="Player" parent="." unique_id=1915309905 instance=ExtResource("5_jmhww")]
 z_index = 1
-position = Vector2(-46, 119)
+position = Vector2(-46, 166)
+active = false
 
 [node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("6_jmhww")]
 top_level = true
 z_index = 1
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1610307949]
+libraries/ = SubResource("AnimationLibrary_22i05")
+
 [connection signal="entered" from="AnimatedGate" to="." method="_on_animated_gate_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
