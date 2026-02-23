@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://b4adap0yflokt"]
 
+[ext_resource type="Script" uid="uid://dqgf0ighix6qv" path="res://Scripts/game.gd" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://b23sfylso5pfr" path="res://Scenes/level_loader.tscn" id="2_3dryh"]
 [ext_resource type="PackedScene" uid="uid://2fpcu6o3qcp0" path="res://Scenes/player.tscn" id="2_qxrlw"]
 
 [node name="Game" type="Node2D" unique_id=1528083587]
+script = ExtResource("1_wrm1d")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1341267817]
 offset_right = 40.0
@@ -14,3 +16,6 @@ z_index = 1
 position = Vector2(10, 6)
 
 [node name="Level_Loader" parent="." unique_id=2094152714 instance=ExtResource("2_3dryh")]
+
+[connection signal="menu_enter" from="Level_Loader" to="." method="_on_level_loader_menu_enter"]
+[connection signal="menu_exit" from="Level_Loader" to="." method="_on_level_loader_menu_exit"]

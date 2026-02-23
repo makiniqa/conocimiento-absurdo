@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://by0novrk3eljo"]
+
+[ext_resource type="Texture2D" uid="uid://ba67opm8juluv" path="res://Tilesets/Doors.png" id="1_p0e35"]
+[ext_resource type="Script" uid="uid://cunql56gbtrm" path="res://Scripts/door.gd" id="1_w6aom"]
+
+[node name="Door" type="Sprite2D" unique_id=91538309]
+texture = ExtResource("1_p0e35")
+vframes = 4
+script = ExtResource("1_w6aom")
