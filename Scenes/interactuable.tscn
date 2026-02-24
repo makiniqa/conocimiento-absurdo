@@ -1,15 +1,17 @@
-[gd_scene format=3 uid="uid://buddrimjfwjwt"]
+[gd_scene format=3 uid="uid://73qbrux4q6n3"]
 
 [ext_resource type="Texture2D" uid="uid://dxl53nkn778o4" path="res://Characters/orcnella.png" id="1_8o05l"]
-[ext_resource type="Script" uid="uid://dw0qq754ivl42" path="res://Scripts/interactuable.gd" id="2_choh8"]
+[ext_resource type="Script" path="res://Scripts/interactuable.gd" id="2_choh8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8o05l"]
 radius = 37.12142
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_choh8"]
-size = Vector2(26, 44)
+size = Vector2(43, 20)
 
 [node name="Interactuable" type="Sprite2D" unique_id=163036046]
+z_as_relative = false
+y_sort_enabled = true
 texture = ExtResource("1_8o05l")
 script = ExtResource("2_choh8")
 
@@ -22,6 +24,7 @@ shape = SubResource("CircleShape2D_8o05l")
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1703795400]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=216413493]
+position = Vector2(0.5, 12)
 shape = SubResource("RectangleShape2D_choh8")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
