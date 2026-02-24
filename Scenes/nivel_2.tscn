@@ -1,0 +1,82 @@
+[gd_scene format=4 uid="uid://2hskoo1jboa"]
+
+[ext_resource type="PackedScene" uid="uid://2fpcu6o3qcp0" path="res://Scenes/player.tscn" id="1_804co"]
+[ext_resource type="Texture2D" uid="uid://gwn2fq3keykc" path="res://Objects/curtains.png" id="1_hxfkh"]
+[ext_resource type="Script" uid="uid://ddr8k0n2ihlqj" path="res://Scripts/nivel_2.gd" id="1_kkyht"]
+[ext_resource type="PackedScene" uid="uid://caxpriv3c766y" path="res://Scenes/dialogue_box.tscn" id="2_hxfkh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kkyht"]
+texture = ExtResource("1_hxfkh")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/left_side = 0
+0:0/0/terrains_peering_bit/top_left_corner = 0
+0:0/0/terrains_peering_bit/top_side = 0
+0:0/0/terrains_peering_bit/top_right_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/left_side = 0
+0:1/0/terrains_peering_bit/top_left_corner = 0
+0:1/0/terrains_peering_bit/top_side = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 1
+0:2/0/terrains_peering_bit/right_side = 1
+0:2/0/terrains_peering_bit/bottom_right_corner = 1
+0:2/0/terrains_peering_bit/bottom_side = 1
+0:2/0/terrains_peering_bit/bottom_left_corner = 1
+0:2/0/terrains_peering_bit/left_side = 1
+0:2/0/terrains_peering_bit/top_left_corner = 1
+0:2/0/terrains_peering_bit/top_side = 1
+0:2/0/terrains_peering_bit/top_right_corner = 1
+
+[sub_resource type="TileSet" id="TileSet_8hre3"]
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_0/terrain_1/name = "Terrain 1"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_kkyht")
+
+[node name="nivel_2" type="Node2D" unique_id=1691302480]
+script = ExtResource("1_kkyht")
+metadata/_custom_type_script = "uid://7abauetwkaxi"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=227540922]
+tile_map_data = PackedByteArray("AAD2/wgAAAAAAAAAAAD3/wgAAAAAAAEAAAD4/wgAAAAAAAEAAAD5/wgAAAAAAAEAAAD6/wcAAAAAAAAAAAD7/wcAAAAAAAAAAAD8/wcAAAAAAAAAAAD9/wcAAAAAAAAAAAD+/wcAAAAAAAAAAAD//wcAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAgAAAAAAAEAAAADAAgAAAAAAAEAAAABAAgAAAAAAAEAAAAAAAgAAAAAAAEAAAD//wgAAAAAAAEAAAD+/wgAAAAAAAEAAAD9/wgAAAAAAAEAAAD8/wgAAAAAAAEAAAD7/wgAAAAAAAEAAAD6/wgAAAAAAAEAAAD5/wcAAAAAAAAAAAD4/wcAAAAAAAAAAAD3/wcAAAAAAAAAAAD2/wcAAAAAAAAAAAD5/wYAAAAAAAAAAAD6/wYAAAAAAAAAAAD7/wYAAAAAAAAAAAD8/wYAAAAAAAAAAAD9/wYAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAD3/wYAAAAAAAAAAAD2/wYAAAAAAAAAAAD4/wYAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAD1/wYAAAAAAAAAAAD1/wcAAAAAAAAAAAD1/wgAAAAAAAAAAAD1/wkAAAAAAAAAAAD2/wkAAAAAAAIAAAD3/wkAAAAAAAIAAAD4/wkAAAAAAAIAAAD5/wkAAAAAAAIAAAD6/wkAAAAAAAIAAAD7/wkAAAAAAAIAAAD8/wkAAAAAAAIAAAD9/wkAAAAAAAIAAAD+/wkAAAAAAAIAAAD//wkAAAAAAAIAAAAAAAkAAAAAAAIAAAABAAkAAAAAAAIAAAACAAkAAAAAAAIAAAADAAkAAAAAAAIAAAAEAAkAAAAAAAAAAAD1/woAAAAAAAAAAAD2/woAAAAAAAIAAAD3/woAAAAAAAIAAAD4/woAAAAAAAIAAAD5/woAAAAAAAIAAAD6/woAAAAAAAIAAAD7/woAAAAAAAIAAAD8/woAAAAAAAIAAAD9/woAAAAAAAIAAAD+/woAAAAAAAIAAAD//woAAAAAAAIAAAD//wsAAAAAAAIAAAAAAAsAAAAAAAIAAAAAAAoAAAAAAAIAAAABAAoAAAAAAAIAAAACAAoAAAAAAAIAAAADAAoAAAAAAAIAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAADAAsAAAAAAAIAAAABAAsAAAAAAAIAAAD+/wsAAAAAAAIAAAD9/wsAAAAAAAIAAAD4/wsAAAAAAAIAAAD3/wsAAAAAAAIAAAD2/wsAAAAAAAIAAAD1/wsAAAAAAAAAAAACAAsAAAAAAAIAAAD7/wsAAAAAAAIAAAD8/wsAAAAAAAIAAAD6/wsAAAAAAAIAAAD5/wsAAAAAAAIAAAAEAA4AAAAAAAAAAAAEAA0AAAAAAAAAAAAEAAwAAAAAAAAAAAADAA4AAAAAAAIAAAADAA0AAAAAAAIAAAADAAwAAAAAAAIAAAACAA4AAAAAAAIAAAACAA0AAAAAAAIAAAACAAwAAAAAAAIAAAABAA4AAAAAAAIAAAABAA0AAAAAAAIAAAABAAwAAAAAAAIAAAAAAA4AAAAAAAIAAAAAAA0AAAAAAAIAAAAAAAwAAAAAAAIAAAD//w4AAAAAAAIAAAD//w0AAAAAAAIAAAD//wwAAAAAAAIAAAD+/w4AAAAAAAIAAAD+/w0AAAAAAAIAAAD+/wwAAAAAAAIAAAD9/w4AAAAAAAIAAAD9/w0AAAAAAAIAAAD9/wwAAAAAAAIAAAD8/w4AAAAAAAIAAAD8/w0AAAAAAAIAAAD8/wwAAAAAAAIAAAD7/w4AAAAAAAIAAAD7/w0AAAAAAAIAAAD7/wwAAAAAAAIAAAD6/w4AAAAAAAIAAAD6/w0AAAAAAAIAAAD6/wwAAAAAAAIAAAD5/w4AAAAAAAIAAAD5/w0AAAAAAAIAAAD5/wwAAAAAAAIAAAD4/w4AAAAAAAIAAAD4/w0AAAAAAAIAAAD4/wwAAAAAAAIAAAD3/w4AAAAAAAIAAAD3/w0AAAAAAAIAAAD3/wwAAAAAAAIAAAD2/w4AAAAAAAIAAAD2/w0AAAAAAAIAAAD2/wwAAAAAAAIAAAD1/w4AAAAAAAAAAAD1/w0AAAAAAAAAAAD1/wwAAAAAAAAAAAD0/woAAAAAAAAAAAD0/wkAAAAAAAAAAAD0/wgAAAAAAAAAAAD0/wcAAAAAAAAAAAD0/wYAAAAAAAAAAAD0/w4AAAAAAAAAAAD0/w0AAAAAAAAAAAD0/wwAAAAAAAAAAAD0/wsAAAAAAAAAAAAFAA8AAAAAAAEAAAAEAA8AAAAAAAEAAAADAA8AAAAAAAEAAAACAA8AAAAAAAEAAAABAA8AAAAAAAEAAAAAAA8AAAAAAAEAAAD//w8AAAAAAAEAAAD+/w8AAAAAAAEAAAD9/w8AAAAAAAEAAAD8/w8AAAAAAAEAAAD7/w8AAAAAAAEAAAD6/w8AAAAAAAEAAAD5/w8AAAAAAAEAAAD4/w8AAAAAAAEAAAD3/w8AAAAAAAEAAAD2/w8AAAAAAAEAAAD1/w8AAAAAAAEAAAD0/w8AAAAAAAEAAAAFAA4AAAAAAAAAAAAFAA0AAAAAAAAAAAAFAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_8hre3")
+
+[node name="Player" parent="." unique_id=1915309905 instance=ExtResource("1_804co")]
+z_index = 1
+position = Vector2(-46, 166)
+
+[node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("2_hxfkh")]
+top_level = true
+z_index = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2109780236]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1728120563]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2026176802]
+position = Vector2(-46, 166)
+zoom = Vector2(5, 5)
