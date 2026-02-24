@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://cqm34cjwc1lyy" path="res://Scripts/nivel_1.gd" id="1_epurl"]
 [ext_resource type="Texture2D" uid="uid://djft675k12co7" path="res://Tilesets/Fences.png" id="2_ecx5m"]
 [ext_resource type="PackedScene" uid="uid://73qbrux4q6n3" path="res://Scenes/interactuable.tscn" id="4_22i05"]
-[ext_resource type="PackedScene" uid="uid://bmkil8moafb8q" path="res://Scenes/animated_gate.tscn" id="5_hwnlj"]
+[ext_resource type="PackedScene" uid="uid://cy6irfu2xpx63" path="res://Scenes/animated_gate.tscn" id="5_hwnlj"]
 [ext_resource type="PackedScene" uid="uid://2fpcu6o3qcp0" path="res://Scenes/player.tscn" id="5_jmhww"]
 [ext_resource type="PackedScene" uid="uid://caxpriv3c766y" path="res://Scenes/dialogue_box.tscn" id="6_jmhww"]
 [ext_resource type="Texture2D" uid="uid://efqlkf0cx6dv" path="res://Objects/hojita.png" id="7_kyajb"]
-[ext_resource type="Texture2D" uid="uid://vvwu8ginak21" path="res://Objects/libreria.png" id="8_ql53f"]
+[ext_resource type="Texture2D" uid="uid://d2e005av4uugj" path="res://Characters/libreria.png" id="8_ql53f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_820xk"]
 texture = ExtResource("1_3givb")
@@ -722,7 +722,8 @@ scale = Vector2(0.35551965, 0.35551965)
 texture = ExtResource("7_kyajb")
 
 [node name="libreria" parent="." unique_id=1407127689 instance=ExtResource("4_22i05")]
-position = Vector2(-186, -90)
+position = Vector2(-184.125, -94)
+scale = Vector2(0.7539064, 0.7539064)
 texture = ExtResource("8_ql53f")
 
 [node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("6_jmhww")]
