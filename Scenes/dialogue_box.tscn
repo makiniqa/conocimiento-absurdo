@@ -55,3 +55,4 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_hygrc")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1694669748]
+volume_db = -10.0
