@@ -231,6 +231,7 @@ advance_mode = 2
 advance_expression = "direction.length() != 0.0"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cvnsp"]
+switch_mode = 2
 advance_mode = 2
 advance_expression = "direction.length() == 0"
 

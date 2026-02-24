@@ -37,17 +37,16 @@ func open():
 func activate():
 	pass
 
+func _input(event: InputEvent) -> void:
+	if active and not isOpen and isInsideInteractRadius:
+		if event is InputEventKey and event.is_pressed() and event.keycode in [KEY_Z, KEY_SPACE, KEY_ENTER]:
+				open()
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	isInsideInteractRadius = true
 	if isOpen:
 		entered.emit(self)
 
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if active and not isOpen and isInsideInteractRadius:
-		if event is InputEventMouseButton:
-			if event.is_pressed() and event.button_index == 1:
-				open()
-				
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	isInsideInteractRadius = false
 

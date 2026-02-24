@@ -25,15 +25,24 @@ var currentText: String = ""
 var textIndex := 0
 var shouldDisplay := false
 var charsPerSecond := 0.0
+var callableOnQueueEnd : Callable = func (): pass
 
 #signal newCharInText
 signal endQueue
 
+func set_callable_on_queue_end(fun: Callable):
+	callableOnQueueEnd = fun
+
 func _ready():
 	$CanvasLayer.visible = false
-
-func queue_display_text(text:String, time: float, voice: String = "default"):
-	displayTextQueue.append(DialogueComponent.new(text,time,voice))
+	
+func queue_display_text(text:String, time: float, voice: String = "default", allow_repeat: bool = false, cancel_all_before: bool = false):
+	var dialogueComponent = DialogueComponent.new(text,time,voice)
+	if allow_repeat or (dialogueComponent not in displayTextQueue and dialogueComponent.text != displayText):
+		if cancel_all_before:
+			shouldDisplay = false
+			displayTextQueue.clear()
+		displayTextQueue.append(dialogueComponent)
 
 func _process(_delta: float) -> void:
 	if not shouldDisplay:
@@ -72,6 +81,9 @@ func _process(_delta: float) -> void:
 			#newCharInText.emit()
 		if (delta > displayTime):
 			shouldDisplay = false
+			displayText = ""
 			$CanvasLayer.visible = false
 			if displayTextQueue.is_empty():
 				endQueue.emit()
+				callableOnQueueEnd.call()
+				callableOnQueueEnd = func (): pass

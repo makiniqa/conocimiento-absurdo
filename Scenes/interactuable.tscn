@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://73qbrux4q6n3"]
 
 [ext_resource type="Texture2D" uid="uid://dxl53nkn778o4" path="res://Characters/orcnella.png" id="1_8o05l"]
-[ext_resource type="Script" path="res://Scripts/interactuable.gd" id="2_choh8"]
+[ext_resource type="Script" uid="uid://dw0qq754ivl42" path="res://Scripts/interactuable.gd" id="2_choh8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8o05l"]
 radius = 37.12142
