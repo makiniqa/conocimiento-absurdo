@@ -29,3 +29,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_dialogue_box_end_queue() -> void:
 	$Player.active = true
+
+func _on_interactuable_interact() -> void:
+	$DialogueBox.queue_display_text("Que haces pibe, tenés un cigarro para convidar?", 5.0, "ah")  

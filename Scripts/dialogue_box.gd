@@ -1,7 +1,9 @@
 extends Control
 
 var voices = {
-	"default": preload("uid://w0c0yf3det61")
+	"default": preload("uid://w0c0yf3det61"),
+	"honk": preload("uid://cqr12speeb8oe"),
+	"ah": preload("uid://bic3xk4k7hl38")
 }
 
 class DialogueComponent:

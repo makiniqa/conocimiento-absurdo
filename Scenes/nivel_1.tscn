@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b6gmfyj42sr50" path="res://Tilesets/Grass.png" id="1_3givb"]
 [ext_resource type="Script" uid="uid://cqm34cjwc1lyy" path="res://Scripts/nivel_1.gd" id="1_epurl"]
 [ext_resource type="Texture2D" uid="uid://djft675k12co7" path="res://Tilesets/Fences.png" id="2_ecx5m"]
+[ext_resource type="PackedScene" uid="uid://buddrimjfwjwt" path="res://Scenes/interactuable.tscn" id="4_22i05"]
 [ext_resource type="PackedScene" uid="uid://bmkil8moafb8q" path="res://Scenes/animated_gate.tscn" id="5_hwnlj"]
 [ext_resource type="PackedScene" uid="uid://2fpcu6o3qcp0" path="res://Scenes/player.tscn" id="5_jmhww"]
 [ext_resource type="PackedScene" uid="uid://caxpriv3c766y" path="res://Scenes/dialogue_box.tscn" id="6_jmhww"]
@@ -683,17 +684,22 @@ tile_map_data = PackedByteArray("AAD2//v/AAABAAAAAAD2//z/AAAAAAEAAAD2//3/AAAAAAE
 tile_set = SubResource("TileSet_3wii6")
 
 [node name="AnimatedGate" parent="." unique_id=2047117113 instance=ExtResource("5_hwnlj")]
+y_sort_enabled = true
 position = Vector2(-46, 0)
 active = true
 
 [node name="Player" parent="." unique_id=1915309905 instance=ExtResource("5_jmhww")]
-z_index = 1
+y_sort_enabled = true
 position = Vector2(-46, 166)
 active = false
 
+[node name="Interactuable" parent="." unique_id=163036046 instance=ExtResource("4_22i05")]
+y_sort_enabled = true
+position = Vector2(-46, 8)
+
 [node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("6_jmhww")]
 top_level = true
-z_index = 1
+y_sort_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1071169265]
 visible = false
@@ -711,5 +717,6 @@ color = Color(0, 0, 0, 1)
 libraries/ = SubResource("AnimationLibrary_22i05")
 
 [connection signal="entered" from="AnimatedGate" to="." method="_on_animated_gate_entered"]
+[connection signal="interact" from="Interactuable" to="." method="_on_interactuable_interact"]
 [connection signal="endQueue" from="DialogueBox" to="." method="_on_dialogue_box_end_queue"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

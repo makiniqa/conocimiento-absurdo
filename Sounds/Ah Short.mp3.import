@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bic3xk4k7hl38"
+path="res://.godot/imported/Ah Short.mp3-33c054553c7f6aa2cdf41cc83140db1d.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Ah Short.mp3"
+dest_files=["res://.godot/imported/Ah Short.mp3-33c054553c7f6aa2cdf41cc83140db1d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
