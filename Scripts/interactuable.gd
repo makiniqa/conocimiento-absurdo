@@ -1,3 +1,4 @@
+class_name Interactuable
 extends Sprite2D
 
 var isInside := false

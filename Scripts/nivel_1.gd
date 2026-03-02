@@ -62,20 +62,35 @@ func _on_hojita_interact() -> void:
 func _on_libreria_interact() -> void:
 	$Player.active = false
 	if not hablaste_con_libreria:
-		$DialogueBox.queue_display_text("hola como va, somos una libreria", default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("no tenemos muchos clientes por aca", default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("hola cómo va, somos una librería", default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("no tenemos muchos clientes por acá", default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("la vieja esa los espanta a todes u.u", default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("buee pero no seas malo con ella :(", default_talking_speed)
 		$DialogueBox.queue_display_text("como sea, cuchame", default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("te doy lo que quieras si logras que esa wacha se vaya", default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("te doy lo que quieras si lográs que esa wacha se vaya", default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("weno owo", default_talking_speed)
 		hablaste_con_libreria = true
 	elif not hablaste_con_orcnella:
-		$DialogueBox.queue_display_text("dale wachin, hace que se vaya", default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("dale wachín, hace que se vaya", default_talking_speed, "honk")
 	else:
 		$DialogueBox.queue_display_text("dice la señora que si le das un cigarrillo se va", default_talking_speed)
-		$DialogueBox.queue_display_text("dios que vieja conchuda", default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("mira", default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("dios qué vieja conchuda", default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("mirá", default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("yo no fumo pero agarrate estos marcadores y hacele un \"cigarrillo\" a la señora", default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("está lo suficientemente pasada de vino como para no darse cuenta", default_talking_speed, "honk")
 		personita_tiene_marcadores = true
+
+
+func _on_vuvuzela_interact() -> void:
+	$Player.active = false
+	$Vuvuzela.queue_free()
+	$DialogueBox.queue_display_text("*hacés un montón de ruido*", default_talking_speed, "honk")
+	$DialogueBox.queue_display_text("pero la vieja no se inmuta", default_talking_speed, "honk")
+
+
+func _on_manzana_interact() -> void:
+	$Player.active = false
+	$Manzana.queue_free()
+	$DialogueBox.queue_display_text("*le tirás una manzana en la cabeza a la vieja*", default_talking_speed, "honk")
+	$DialogueBox.queue_display_text("bueno tus modales no son los mejores pibe", default_talking_speed, "honk")
+	$DialogueBox.queue_display_text("pero gracias tenía hambre", default_talking_speed, "honk")

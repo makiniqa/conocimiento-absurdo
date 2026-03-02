@@ -4,11 +4,13 @@
 [ext_resource type="Script" uid="uid://cqm34cjwc1lyy" path="res://Scripts/nivel_1.gd" id="1_epurl"]
 [ext_resource type="Texture2D" uid="uid://djft675k12co7" path="res://Tilesets/Fences.png" id="2_ecx5m"]
 [ext_resource type="PackedScene" uid="uid://73qbrux4q6n3" path="res://Scenes/interactuable.tscn" id="4_22i05"]
-[ext_resource type="PackedScene" uid="uid://bmkil8moafb8q" path="res://Scenes/animated_gate.tscn" id="5_hwnlj"]
+[ext_resource type="PackedScene" uid="uid://cy6irfu2xpx63" path="res://Scenes/animated_gate.tscn" id="5_hwnlj"]
 [ext_resource type="PackedScene" uid="uid://2fpcu6o3qcp0" path="res://Scenes/player.tscn" id="5_jmhww"]
 [ext_resource type="PackedScene" uid="uid://caxpriv3c766y" path="res://Scenes/dialogue_box.tscn" id="6_jmhww"]
 [ext_resource type="Texture2D" uid="uid://efqlkf0cx6dv" path="res://Objects/hojita.png" id="7_kyajb"]
 [ext_resource type="Texture2D" uid="uid://d2e005av4uugj" path="res://Characters/libreria.png" id="8_ql53f"]
+[ext_resource type="Texture2D" uid="uid://cpsd82px4s5yy" path="res://Objects/Egg item.png" id="9_xvap8"]
+[ext_resource type="Script" uid="uid://dw0qq754ivl42" path="res://Scripts/interactuable.gd" id="10_rjvxo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_820xk"]
 texture = ExtResource("1_3givb")
@@ -709,9 +711,8 @@ position = Vector2(-46, 0)
 
 [node name="Player" parent="." unique_id=1915309905 instance=ExtResource("5_jmhww")]
 y_sort_enabled = true
-position = Vector2(-46, 166)
+position = Vector2(-46, 72)
 active = false
-direction = Vector2(0, -1)
 
 [node name="Orcnella" parent="." unique_id=163036046 instance=ExtResource("4_22i05")]
 position = Vector2(-46, 8)
@@ -725,6 +726,16 @@ texture = ExtResource("7_kyajb")
 position = Vector2(-184.125, -94)
 scale = Vector2(0.7539064, 0.7539064)
 texture = ExtResource("8_ql53f")
+
+[node name="Vuvuzela" parent="." unique_id=458951742 instance=ExtResource("4_22i05")]
+position = Vector2(-196, 82)
+texture = ExtResource("9_xvap8")
+
+[node name="Manzana" type="Sprite2D" parent="." unique_id=390330101]
+position = Vector2(34, 33)
+texture = ExtResource("9_xvap8")
+script = ExtResource("10_rjvxo")
+metadata/_custom_type_script = "uid://dw0qq754ivl42"
 
 [node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("6_jmhww")]
 top_level = true
@@ -749,5 +760,7 @@ libraries/ = SubResource("AnimationLibrary_22i05")
 [connection signal="interact" from="Orcnella" to="." method="_on_interactuable_interact"]
 [connection signal="interact" from="hojita" to="." method="_on_hojita_interact"]
 [connection signal="interact" from="libreria" to="." method="_on_libreria_interact"]
+[connection signal="interact" from="Vuvuzela" to="." method="_on_vuvuzela_interact"]
+[connection signal="interact" from="Manzana" to="." method="_on_manzana_interact"]
 [connection signal="endQueue" from="DialogueBox" to="." method="_on_dialogue_box_end_queue"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
