@@ -1,10 +1,15 @@
 extends Control
+class_name  DialogueBox
 
 var voices = {
+	"silence": null,
 	"default": preload("uid://w0c0yf3det61"),
 	"honk": preload("uid://cqr12speeb8oe"),
-	"ah": preload("uid://bic3xk4k7hl38")
+	"ah": preload("uid://bic3xk4k7hl38"),
+	"god": preload("uid://wl0yevjkglay")
 }
+
+const default_talking_speed := 15.0
 
 class DialogueComponent:
 	var text: String = ""
@@ -78,7 +83,8 @@ func _process(_delta: float) -> void:
 			textIndex += 1
 			currentText = displayText.substr(0,textIndex)
 			$CanvasLayer/Label.text = currentText
-			$AudioStreamPlayer.play()
+			if $AudioStreamPlayer.stream:
+				$AudioStreamPlayer.play()
 			#newCharInText.emit()
 		if (delta > displayTime):
 			shouldDisplay = false
