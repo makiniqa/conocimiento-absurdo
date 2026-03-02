@@ -8,14 +8,15 @@ var voices = {
 
 class DialogueComponent:
 	var text: String = ""
-	var time: float = 0.0
+	var speed: float = 0.0 # in characters per second
 	var voice: String = "default"
 	
-	func _init(text: String, time: float, voice: String = "default"):
+	func _init(text: String, speed: float, voice: String = "default"):
 		self.text = text
-		self.time = time
+		self.speed = speed
 		self.voice = voice
 
+var waitTime: float = 1.5
 var t0: float = 0
 var t1: float = 0
 var displayTime: float = 0
@@ -36,8 +37,8 @@ func set_callable_on_queue_end(fun: Callable):
 func _ready():
 	$CanvasLayer.visible = false
 	
-func queue_display_text(text:String, time: float, voice: String = "default", allow_repeat: bool = false, cancel_all_before: bool = false):
-	var dialogueComponent = DialogueComponent.new(text,time,voice)
+func queue_display_text(text:String, speed: float, voice: String = "default", allow_repeat: bool = false, cancel_all_before: bool = false):
+	var dialogueComponent = DialogueComponent.new(text,speed,voice)
 	if allow_repeat or (dialogueComponent not in displayTextQueue and dialogueComponent.text != displayText):
 		if cancel_all_before:
 			shouldDisplay = false
@@ -50,15 +51,15 @@ func _process(_delta: float) -> void:
 		if next == null:
 			return
 		var text = next.text
-		var time = next.time
+		var speed = next.speed
 		var voice = next.voice
-		if not text.is_empty() and time > 0.0:
+		if not text.is_empty() and speed > 0.0:
 			shouldDisplay = true
-			displayTime = time
+			displayTime = text.length() / speed + waitTime
 			displayText = text
 			currentText = ""
 			textIndex = 0
-			charsPerSecond = text.length() / (time * 0.5)
+			charsPerSecond = speed
 			t0 = Time.get_ticks_msec()*1.0e-3
 			$CanvasLayer.visible = true
 			$CanvasLayer/Label.text = currentText
