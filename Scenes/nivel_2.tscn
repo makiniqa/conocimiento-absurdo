@@ -49,6 +49,91 @@ terrain_set_0/terrain_1/name = "Terrain 1"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_kkyht")
 
+[sub_resource type="Animation" id="Animation_kkyht"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-46, 166)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Player:direction")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Player:active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8hre3"]
+resource_name = "enter_level"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-46, 244), Vector2(-48, 180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Player:direction")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -1), Vector2(0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Player:active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.08),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_amwks"]
+_data = {
+&"RESET": SubResource("Animation_kkyht"),
+&"enter_level": SubResource("Animation_8hre3")
+}
+
 [node name="nivel_2" type="Node2D" unique_id=1691302480]
 script = ExtResource("1_kkyht")
 metadata/_custom_type_script = "uid://7abauetwkaxi"
@@ -60,6 +145,8 @@ tile_set = SubResource("TileSet_8hre3")
 [node name="Player" parent="." unique_id=1915309905 instance=ExtResource("1_804co")]
 z_index = 1
 position = Vector2(-46, 166)
+active = false
+direction = Vector2(0, -1)
 
 [node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("2_hxfkh")]
 top_level = true
@@ -78,5 +165,11 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2026176802]
-position = Vector2(-46, 166)
+position = Vector2(-49, 178)
 zoom = Vector2(5, 5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=912497528]
+root_node = NodePath("../TileMapLayer")
+libraries/ = SubResource("AnimationLibrary_amwks")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
