@@ -6,7 +6,8 @@ var voices = {
 	"default": preload("uid://w0c0yf3det61"),
 	"honk": preload("uid://cqr12speeb8oe"),
 	"ah": preload("uid://bic3xk4k7hl38"),
-	"god": preload("uid://wl0yevjkglay")
+	"god": preload("uid://wl0yevjkglay"),
+	"bark": preload("uid://ieaeafhgb0uu")
 }
 
 const default_talking_speed := 15.0
