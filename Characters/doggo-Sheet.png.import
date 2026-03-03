@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djjosgoondvev"
-path="res://.godot/imported/tocadiscos-Sheet.png-dc6f09609eb8d7ac7a49a051476b24ae.ctex"
+uid="uid://byvhayeoncn4s"
+path="res://.godot/imported/doggo-Sheet.png-995f0c30a7ba762487a689595fa9a9e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/tocadiscos-Sheet.png"
-dest_files=["res://.godot/imported/tocadiscos-Sheet.png-dc6f09609eb8d7ac7a49a051476b24ae.ctex"]
+source_file="res://Characters/doggo-Sheet.png"
+dest_files=["res://.godot/imported/doggo-Sheet.png-995f0c30a7ba762487a689595fa9a9e1.ctex"]
 
 [params]
 
