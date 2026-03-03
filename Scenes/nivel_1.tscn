@@ -564,6 +564,9 @@ sources/0 = SubResource("TileSetAtlasSource_l2piy")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvap8"]
 size = Vector2(43, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjvxo"]
+size = Vector2(62.341957, 15.917095)
+
 [sub_resource type="Animation" id="Animation_22i05"]
 length = 0.001
 
@@ -735,6 +738,13 @@ texture = ExtResource("7_kyajb")
 position = Vector2(-184.125, -94)
 scale = Vector2(0.7539064, 0.7539064)
 texture = ExtResource("8_ql53f")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="libreria" unique_id=401404206]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="libreria/StaticBody2D" unique_id=1771802276]
+position = Vector2(0.82901, 9.284958)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_rjvxo")
 
 [node name="Vuvuzela" parent="." unique_id=458951742 instance=ExtResource("4_22i05")]
 position = Vector2(-196, 82)
