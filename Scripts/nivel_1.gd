@@ -94,7 +94,6 @@ func _on_vuvuzela_interact() -> void:
 	$DialogueBox.queue_display_text("*hacés un montón de ruido*", DialogueBox.default_talking_speed, "honk")
 	$DialogueBox.queue_display_text("pero la vieja no se inmuta", DialogueBox.default_talking_speed, "honk")
 
-
 func _on_manzana_interact() -> void:
 	$Player.active = false
 	$Manzana.queue_free()

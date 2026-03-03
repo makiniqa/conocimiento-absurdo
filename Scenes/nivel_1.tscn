@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://efqlkf0cx6dv" path="res://Objects/hojita.png" id="7_kyajb"]
 [ext_resource type="Texture2D" uid="uid://d2e005av4uugj" path="res://Characters/libreria.png" id="8_ql53f"]
 [ext_resource type="Texture2D" uid="uid://cpsd82px4s5yy" path="res://Objects/Egg item.png" id="9_xvap8"]
-[ext_resource type="Script" uid="uid://dw0qq754ivl42" path="res://Scripts/interactuable.gd" id="10_rjvxo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_820xk"]
 texture = ExtResource("1_3givb")
@@ -731,11 +730,8 @@ texture = ExtResource("8_ql53f")
 position = Vector2(-196, 82)
 texture = ExtResource("9_xvap8")
 
-[node name="Manzana" type="Sprite2D" parent="." unique_id=390330101]
-position = Vector2(34, 33)
+[node name="Manzana" parent="." unique_id=353815338 instance=ExtResource("4_22i05")]
 texture = ExtResource("9_xvap8")
-script = ExtResource("10_rjvxo")
-metadata/_custom_type_script = "uid://dw0qq754ivl42"
 
 [node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("6_jmhww")]
 top_level = true
