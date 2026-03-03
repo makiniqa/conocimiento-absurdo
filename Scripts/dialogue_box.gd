@@ -16,11 +16,13 @@ class DialogueComponent:
 	var text: String = ""
 	var speed: float = 0.0 # in characters per second
 	var voice: String = "default"
+	var dialogueID: String = "none"
 	
-	func _init(text: String, speed: float, voice: String = "default"):
+	func _init(text: String, speed: float, voice: String = "default", dialogueID: String = "none"):
 		self.text = text
 		self.speed = speed
 		self.voice = voice
+		self.dialogueID = dialogueID
 
 var waitTime: float = 1.5
 var t0: float = 0
@@ -29,6 +31,7 @@ var displayTime: float = 0
 var displayTextQueue: Array[DialogueComponent] = []
 var displayText: String = ""
 var currentText: String = ""
+var currentDialogueID: String = ""
 var textIndex := 0
 var shouldDisplay := false
 var charsPerSecond := 0.0
@@ -43,9 +46,9 @@ func set_callable_on_queue_end(fun: Callable):
 func _ready():
 	$CanvasLayer.visible = false
 	
-func queue_display_text(text:String, speed: float, voice: String = "default", allow_repeat: bool = false, cancel_all_before: bool = false):
-	var dialogueComponent = DialogueComponent.new(text,speed,voice)
-	if allow_repeat or (dialogueComponent not in displayTextQueue and dialogueComponent.text != displayText):
+func queue_display_text(text:String, speed: float, voice: String = "default", dialogueID: String = "none", allow_repeat: bool = false, cancel_all_before: bool = false):
+	var dialogueComponent = DialogueComponent.new(text,speed,voice,dialogueID)
+	if allow_repeat or true: # TODO resolver este cosocroto
 		if cancel_all_before:
 			shouldDisplay = false
 			displayTextQueue.clear()
@@ -64,6 +67,7 @@ func _process(_delta: float) -> void:
 			displayTime = text.length() / speed + waitTime
 			displayText = text
 			currentText = ""
+			currentDialogueID = next.dialogueID
 			textIndex = 0
 			charsPerSecond = speed
 			t0 = Time.get_ticks_msec()*1.0e-3
@@ -90,6 +94,7 @@ func _process(_delta: float) -> void:
 		if (delta > displayTime):
 			shouldDisplay = false
 			displayText = ""
+			currentDialogueID = ""
 			$CanvasLayer.visible = false
 			if displayTextQueue.is_empty():
 				endQueue.emit()

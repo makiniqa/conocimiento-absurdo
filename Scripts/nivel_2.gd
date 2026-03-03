@@ -5,13 +5,18 @@ func _ready():
 	$AnimationPlayer.play("enter_level")
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "enter_level":		
+	if anim_name == "enter_level":
+		$Player.active = false
 		$DialogueBox.queue_display_text("...", DialogueBox.default_talking_speed*0.25, "silence")
 		$DialogueBox.queue_display_text("AUTO.", DialogueBox.default_talking_speed*0.5, "god")
 		$DialogueBox.queue_display_text("PERRO.", DialogueBox.default_talking_speed*0.5, "god")
 		$DialogueBox.queue_display_text("DISCO", DialogueBox.default_talking_speed*0.5, "god")
+		$DialogueBox.set_callable_on_queue_end(
+			func () : $Player.active = true
+			)
 	elif anim_name == "atropellao":
 		$Player.active = true
+		$AutoRoto.visible = true
 		$AnimationPlayer.play("aparecePerritoWaf")
 		
 var interaccionesCQB := 0
@@ -44,4 +49,9 @@ func _on_cortina_y_cuadro_interact() -> void:
 		)
 
 func _on_pishito_interact() -> void:
+	$DialogueBox.queue_display_text("PISHITO 😍", DialogueBox.default_talking_speed, "ah")
 	$DialogueBox.queue_display_text("waf!", DialogueBox.default_talking_speed, "bark")
+
+func _on_auto_roto_interact() -> void:
+	$DialogueBox.queue_display_text(":O se salió el cosito este de la rueda", DialogueBox.default_talking_speed, "ah")
+	$DialogueBox.queue_display_text("creo que este pishito quiere que se lo tire!", DialogueBox.default_talking_speed, "ah")
