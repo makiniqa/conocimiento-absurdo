@@ -1,6 +1,5 @@
 extends Level
 
-
 var door_entered := false
 var hablaste_con_libreria := false
 var hablaste_con_orcnella := false
@@ -8,13 +7,34 @@ var personita_tiene_hojita := false
 var personita_tiene_marcadores := false
 var puerta_desbloqueada := false
 
+class Character:
+	static var dialogueBox
+	var name: String = ""
+	var voice: String = "default"
+	var speed: float = 0.0
+	
+	func _init(name, voice = "default", speed := DialogueBox.default_talking_speed):
+		self.name = name
+		self.voice = voice
+		self.speed = speed
+	
+	func say(text: String, dialogueID: String = ""):
+		dialogueBox.queue_display_text(text, DialogueBox.default_talking_speed, self.voice, dialogueID)
+		
+		
+var pibe := Character.new("Pibe")
+var orcnella := Character.new("Orcnella", "ah")
+var librero := Character.new("Librero", "honk")
+var dios := Character.new("Librero", "god", DialogueBox.default_talking_speed*0.5)
+
 func _ready():
+	Character.dialogueBox = $DialogueBox
 	$AnimationPlayer.play("enter_level")
 
 func _on_animated_gate_entered(where: Door) -> void:
 	if not door_entered:
 		door_entered = true
-		$DialogueBox.queue_display_text("*salis por la puerta uwu*", DialogueBox.default_talking_speed)
+		pibe.say("*salis por la puerta uwu*")
 		$AnimationPlayer.play("fade_out")
 		$Player.active = false
 		
@@ -26,17 +46,17 @@ func _process(_delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "enter_level":
-		$DialogueBox.queue_display_text("holiii, estoy en busqueda de dios >:)", DialogueBox.default_talking_speed)
-		$DialogueBox.queue_display_text("él mismo me dijo que vive acá pero no sé qué onda", DialogueBox.default_talking_speed)
-		$DialogueBox.queue_display_text("es re raro este lugar...", DialogueBox.default_talking_speed)
-		$DialogueBox.queue_display_text("uh bancá...", DialogueBox.default_talking_speed)
-		$DialogueBox.queue_display_text("me está intentando hablar ahora mismo! :DDD", DialogueBox.default_talking_speed)
-		$DialogueBox.queue_display_text("...", DialogueBox.default_talking_speed*0.25, "silence")
-		$DialogueBox.queue_display_text("CIGARRILLO.", DialogueBox.default_talking_speed*0.5, "god")
-		$DialogueBox.queue_display_text("ENGAÑO.", DialogueBox.default_talking_speed*0.5, "god")
-		$DialogueBox.queue_display_text("MARCADOR.", DialogueBox.default_talking_speed*0.5, "god")
-		$DialogueBox.queue_display_text("...", DialogueBox.default_talking_speed*0.5, "silence")
-		$DialogueBox.queue_display_text("me pregunto qué significará esto :O", DialogueBox.default_talking_speed)
+		pibe.say("holiii, estoy en busqueda de dios >:)")
+		pibe.say("él mismo me dijo que vive acá pero no sé qué onda")
+		pibe.say("es re raro este lugar...")
+		pibe.say("uh bancá...")
+		pibe.say("me está intentando hablar ahora mismo! :DDD")
+		dios.say("...")
+		dios.say("CIGARRILLO.")
+		dios.say("ENGAÑO.")
+		dios.say("MARCADOR.")
+		dios.say("...")
+		pibe.say("me pregunto qué significará esto :O")
 
 
 func _on_dialogue_box_end_queue() -> void:
@@ -45,18 +65,18 @@ func _on_dialogue_box_end_queue() -> void:
 func _on_interactuable_interact() -> void:
 	$Player.active = false
 	if not hablaste_con_libreria:
-		$DialogueBox.queue_display_text("qué hacés pibe, tenés un cigarro para convidar?", DialogueBox.default_talking_speed, "ah")  
-		$DialogueBox.queue_display_text("disculpá no fumo", DialogueBox.default_talking_speed)
+		orcnella.say("Que haces pibe, tenés un cigarro para convidar?")
+		pibe.say("disculpa no fumo")
 	elif not hablaste_con_orcnella:
-		$DialogueBox.queue_display_text("che el de la librería quiere que te vayas", DialogueBox.default_talking_speed)
-		$DialogueBox.queue_display_text("decile a ese gil que si me convida un pucho me voy", DialogueBox.default_talking_speed, "ah")  
-		$DialogueBox.queue_display_text("weno", DialogueBox.default_talking_speed)
+		pibe.say("che el de la librería quiere que te vayas")
+		orcnella.say("decile a ese gil que si me convida un pucho me voy")
+		pibe.say("weno")
 		hablaste_con_orcnella = true
 	elif not personita_tiene_hojita or not personita_tiene_marcadores:
-		$DialogueBox.queue_display_text("si no tenés un cigarrillo tocá de acá pibe", DialogueBox.default_talking_speed, "ah")
+		orcnella.say("si no tenes un cigarrillo tocá de acá pibe")
 	else:
-		$DialogueBox.queue_display_text("holi acá tengo un cigarrillo", DialogueBox.default_talking_speed)
-		$DialogueBox.queue_display_text("eeh gracias", DialogueBox.default_talking_speed, "ah")
+		pibe.say("holi acá tengo un cigarrillo")
+		orcnella.say("eeh gracias")
 		$DialogueBox.set_callable_on_queue_end(
 			func (): $AnimationPlayer.play("la bruja se va")
 		)
@@ -67,32 +87,34 @@ func _on_hojita_interact() -> void:
 	if personita_tiene_marcadores:
 		$hojita.queue_free()
 		personita_tiene_hojita = true
-		$DialogueBox.queue_display_text("omg una hojita hii", DialogueBox.default_talking_speed, "default", false, true)
+		pibe.say("omg una hojita hii")
 	else:
-		$DialogueBox.queue_display_text("hay una hoja en el piso", DialogueBox.default_talking_speed, "default")
-		$DialogueBox.queue_display_text("pero no tenés nada para escribir", DialogueBox.default_talking_speed, "default")
+		pibe.say("hay una hoja en el piso")
+		pibe.say("pero no tenés nada para escribir")
 
 func _on_libreria_interact() -> void:
 	$Player.active = false
 	if puerta_desbloqueada:
-		$DialogueBox.queue_display_text("te debo la vida pibe", DialogueBox.default_talking_speed, "honk")
+		librero.say("te debo la vida pibe")
 	elif not hablaste_con_libreria:
-		$DialogueBox.queue_display_text("hola cómo va, somos una librería", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("no tenemos muchos clientes por acá", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("la vieja ésa los espanta a todes u.u", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("buee pero no seas malo con ella :(", DialogueBox.default_talking_speed)
-		$DialogueBox.queue_display_text("como sea, cuchame", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("te doy lo que quieras si lográs que esa wacha se vaya", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("weno owo", DialogueBox.default_talking_speed)
+		librero.say("hola cómo va, somos una librería")
+		librero.say("no tenemos muchos clientes por acá")
+		librero.say("la vieja ésa los espanta a todes u.u")
+		pibe.say("buee pero no seas malo con ella :(")
+		librero.say("como sea, cuchame")
+		librero.say("te doy lo que quieras si lográs que esa wacha se vaya")
+		pibe.say("weno owo")
 		hablaste_con_libreria = true
 	elif not hablaste_con_orcnella:
-		$DialogueBox.queue_display_text("dale wachín, hace que se vaya", DialogueBox.default_talking_speed, "honk")
+		var dialogueID := "libreria1"
+		librero.say("dale wachín, hace que se vaya", dialogueID)
 	else:
-		$DialogueBox.queue_display_text("dice la señora que si le das un cigarrillo se va", DialogueBox.default_talking_speed)
-		$DialogueBox.queue_display_text("dios qué vieja conchuda", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("mirá", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("yo no fumo pero agarrate estos marcadores y hacele un \"cigarrillo\" a la señora", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("está lo suficientemente pasada de vino como para no darse cuenta", DialogueBox.default_talking_speed, "honk")
+		var dialogueID := "libreria2"
+		pibe.say("dice la señora que si le das un cigarrillo se va", dialogueID)
+		librero.say("dios qué vieja conchuda", dialogueID)
+		librero.say("mirá", dialogueID)
+		librero.say("yo no fumo pero agarrate estos marcadores y hacele un \"cigarrillo\" a la señora", dialogueID)
+		librero.say("está lo suficientemente pasada de vino como para no darse cuenta", dialogueID)
 		personita_tiene_marcadores = true
 
 
@@ -100,35 +122,34 @@ func _on_vuvuzela_interact() -> void:
 	$Player.active = false
 	if hablaste_con_orcnella and not puerta_desbloqueada:
 		$Vuvuzela.queue_free()
-		$DialogueBox.queue_display_text("*hacés un montón de ruido*", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("pero la vieja no se inmuta", DialogueBox.default_talking_speed, "honk")
+		pibe.say("*hacés un montón de ruido*", "vuvuzela0")
+		pibe.say("pero la vieja no se inmuta", "vuvuzela0")
 	else:
-		$DialogueBox.queue_display_text("una vuvuzela", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("cómo odiás estas vergas", DialogueBox.default_talking_speed, "honk")
+		pibe.say("una vuvuzela", "vuvuzela1")
+		pibe.say("cómo odiás estas vergas", "vuvuzela1")
 
 func _on_manzana_interact() -> void:
 	$Player.active = false
 	if hablaste_con_orcnella and not puerta_desbloqueada:
 		$Manzana.queue_free()
-		$DialogueBox.queue_display_text("*le tirás una manzana en la cabeza a la vieja*", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("bueno tus modales no son los mejores pibe", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("pero gracias tenía hambre", DialogueBox.default_talking_speed, "honk")
+		pibe.say("*le tirás una manzana en la cabeza a la vieja*")
+		orcnella.say("bueno tus modales no son los mejores pibe", "honk")
+		orcnella.say("pero gracias tenía hambre", "honk")
 	else:
-		$DialogueBox.queue_display_text("una suculenta manzana", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("no tenés hambre", DialogueBox.default_talking_speed, "honk")
+		pibe.say("una suculenta manzana")
+		pibe.say("no tenés hambre.")
 
 func _on_moneda_interact() -> void:
 	$Player.active = false
 	if hablaste_con_orcnella and not puerta_desbloqueada:
 		$Moneda.queue_free()
-		$DialogueBox.queue_display_text("*tirás la moneda del otro lado de la cerca*", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("che vieja", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("mirá hay plata por allá", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("no creo en el dinero pibe", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("ni en los microondas", DialogueBox.default_talking_speed, "honk")
+		pibe.say("*tirás la moneda del otro lado de la cerca*")
+		pibe.say("che vieja")
+		pibe.say("mirá hay plata por allá")
+		orcnella.say("no creo en el dinero pibe")
+		orcnella.say("ni en los microondas")
 	else:
-		$DialogueBox.queue_display_text("uia, platita", DialogueBox.default_talking_speed, "honk")
-
+		pibe.say("uia, platita")
 
 func _on_gatito_interact() -> void:
 	$Player.active = false
