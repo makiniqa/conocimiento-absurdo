@@ -64,9 +64,13 @@ func _on_interactuable_interact() -> void:
 		$AnimatedGate.active = true
 func _on_hojita_interact() -> void:
 	$Player.active = false
-	$hojita.queue_free()
-	personita_tiene_hojita = true
-	$DialogueBox.queue_display_text("omg una hojita hii", DialogueBox.default_talking_speed, "default", false, true)
+	if personita_tiene_marcadores:
+		$hojita.queue_free()
+		personita_tiene_hojita = true
+		$DialogueBox.queue_display_text("omg una hojita hii", DialogueBox.default_talking_speed, "default", false, true)
+	else:
+		$DialogueBox.queue_display_text("hay una hoja en el piso", DialogueBox.default_talking_speed, "default")
+		$DialogueBox.queue_display_text("pero no tenés nada para escribir", DialogueBox.default_talking_speed, "default")
 
 func _on_libreria_interact() -> void:
 	$Player.active = false

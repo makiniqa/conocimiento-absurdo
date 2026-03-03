@@ -734,7 +734,7 @@ position = Vector2(-9, -2)
 shape = SubResource("RectangleShape2D_xvap8")
 
 [node name="hojita" parent="." unique_id=384207566 instance=ExtResource("4_22i05")]
-position = Vector2(-125, -43)
+position = Vector2(-241, 153)
 scale = Vector2(0.35551965, 0.35551965)
 texture = ExtResource("7_kyajb")
 
@@ -751,7 +751,7 @@ scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_rjvxo")
 
 [node name="Vuvuzela" parent="." unique_id=458951742 instance=ExtResource("4_22i05")]
-position = Vector2(-196, 82)
+position = Vector2(-221, -16)
 texture = ExtResource("9_xvap8")
 
 [node name="Manzana" parent="." unique_id=353815338 instance=ExtResource("4_22i05")]
@@ -763,7 +763,7 @@ position = Vector2(43, 0)
 texture = ExtResource("9_xvap8")
 
 [node name="Gatito" parent="." unique_id=1661824083 instance=ExtResource("4_22i05")]
-position = Vector2(-102, 134)
+position = Vector2(-155, 87)
 texture = ExtResource("9_xvap8")
 
 [node name="Kiosko" parent="." unique_id=810447935 instance=ExtResource("4_22i05")]
