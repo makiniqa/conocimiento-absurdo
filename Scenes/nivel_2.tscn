@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://2fpcu6o3qcp0" path="res://Scenes/player.tscn" id="1_804co"]
 [ext_resource type="Texture2D" uid="uid://gwn2fq3keykc" path="res://Objects/curtains.png" id="1_hxfkh"]
 [ext_resource type="Script" uid="uid://ddr8k0n2ihlqj" path="res://Scripts/nivel_2.gd" id="1_kkyht"]
+[ext_resource type="PackedScene" uid="uid://73qbrux4q6n3" path="res://Scenes/interactuable.tscn" id="2_amwks"]
 [ext_resource type="PackedScene" uid="uid://caxpriv3c766y" path="res://Scenes/dialogue_box.tscn" id="2_hxfkh"]
+[ext_resource type="Texture2D" uid="uid://cpsd82px4s5yy" path="res://Objects/Egg item.png" id="3_psj36"]
+[ext_resource type="Texture2D" uid="uid://djjosgoondvev" path="res://Characters/tocadiscos-Sheet.png" id="7_psj36"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kkyht"]
 texture = ExtResource("1_hxfkh")
@@ -61,31 +64,62 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-46, 166)]
+"values": [Vector2(26, 146)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Player:direction")
+tracks/1/path = NodePath("../Pishito:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -1)]
+"values": [Vector2(-214, 196)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Player:active")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+
+[sub_resource type="Animation" id="Animation_pot7g"]
+resource_name = "aparecePerritoWaf"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Pishito:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-214, 196), Vector2(3, 198)]
+}
+
+[sub_resource type="Animation" id="Animation_psj36"]
+resource_name = "atropellao"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Player:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(26, 146), Vector2(4, 174), Vector2(-12, 200.00002), Vector2(-28, 226)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Player:rotation")
+tracks/1/interp = 3
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.873169, -3.0457876, -3.1415927, -3.1415927, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_8hre3"]
@@ -128,29 +162,53 @@ tracks/2/keys = {
 "values": [false, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_2wi6x"]
+resource_name = "preatropellao"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(26, 146)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_amwks"]
 _data = {
 &"RESET": SubResource("Animation_kkyht"),
-&"enter_level": SubResource("Animation_8hre3")
+&"aparecePerritoWaf": SubResource("Animation_pot7g"),
+&"atropellao": SubResource("Animation_psj36"),
+&"enter_level": SubResource("Animation_8hre3"),
+&"preatropellao": SubResource("Animation_2wi6x")
 }
 
 [node name="nivel_2" type="Node2D" unique_id=1691302480]
 script = ExtResource("1_kkyht")
 metadata/_custom_type_script = "uid://7abauetwkaxi"
 
+[node name="ChicaQueBaila" parent="." unique_id=163036046 instance=ExtResource("2_amwks")]
+z_index = 1
+position = Vector2(-84, 141)
+texture = ExtResource("3_psj36")
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=227540922]
-tile_map_data = PackedByteArray("AAD2/wgAAAAAAAAAAAD3/wgAAAAAAAEAAAD4/wgAAAAAAAEAAAD5/wgAAAAAAAEAAAD6/wcAAAAAAAAAAAD7/wcAAAAAAAAAAAD8/wcAAAAAAAAAAAD9/wcAAAAAAAAAAAD+/wcAAAAAAAAAAAD//wcAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAgAAAAAAAEAAAADAAgAAAAAAAEAAAABAAgAAAAAAAEAAAAAAAgAAAAAAAEAAAD//wgAAAAAAAEAAAD+/wgAAAAAAAEAAAD9/wgAAAAAAAEAAAD8/wgAAAAAAAEAAAD7/wgAAAAAAAEAAAD6/wgAAAAAAAEAAAD5/wcAAAAAAAAAAAD4/wcAAAAAAAAAAAD3/wcAAAAAAAAAAAD2/wcAAAAAAAAAAAD5/wYAAAAAAAAAAAD6/wYAAAAAAAAAAAD7/wYAAAAAAAAAAAD8/wYAAAAAAAAAAAD9/wYAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAD3/wYAAAAAAAAAAAD2/wYAAAAAAAAAAAD4/wYAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAD1/wYAAAAAAAAAAAD1/wcAAAAAAAAAAAD1/wgAAAAAAAAAAAD1/wkAAAAAAAAAAAD2/wkAAAAAAAIAAAD3/wkAAAAAAAIAAAD4/wkAAAAAAAIAAAD5/wkAAAAAAAIAAAD6/wkAAAAAAAIAAAD7/wkAAAAAAAIAAAD8/wkAAAAAAAIAAAD9/wkAAAAAAAIAAAD+/wkAAAAAAAIAAAD//wkAAAAAAAIAAAAAAAkAAAAAAAIAAAABAAkAAAAAAAIAAAACAAkAAAAAAAIAAAADAAkAAAAAAAIAAAAEAAkAAAAAAAAAAAD1/woAAAAAAAAAAAD2/woAAAAAAAIAAAD3/woAAAAAAAIAAAD4/woAAAAAAAIAAAD5/woAAAAAAAIAAAD6/woAAAAAAAIAAAD7/woAAAAAAAIAAAD8/woAAAAAAAIAAAD9/woAAAAAAAIAAAD+/woAAAAAAAIAAAD//woAAAAAAAIAAAD//wsAAAAAAAIAAAAAAAsAAAAAAAIAAAAAAAoAAAAAAAIAAAABAAoAAAAAAAIAAAACAAoAAAAAAAIAAAADAAoAAAAAAAIAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAADAAsAAAAAAAIAAAABAAsAAAAAAAIAAAD+/wsAAAAAAAIAAAD9/wsAAAAAAAIAAAD4/wsAAAAAAAIAAAD3/wsAAAAAAAIAAAD2/wsAAAAAAAIAAAD1/wsAAAAAAAAAAAACAAsAAAAAAAIAAAD7/wsAAAAAAAIAAAD8/wsAAAAAAAIAAAD6/wsAAAAAAAIAAAD5/wsAAAAAAAIAAAAEAA4AAAAAAAAAAAAEAA0AAAAAAAAAAAAEAAwAAAAAAAAAAAADAA4AAAAAAAIAAAADAA0AAAAAAAIAAAADAAwAAAAAAAIAAAACAA4AAAAAAAIAAAACAA0AAAAAAAIAAAACAAwAAAAAAAIAAAABAA4AAAAAAAIAAAABAA0AAAAAAAIAAAABAAwAAAAAAAIAAAAAAA4AAAAAAAIAAAAAAA0AAAAAAAIAAAAAAAwAAAAAAAIAAAD//w4AAAAAAAIAAAD//w0AAAAAAAIAAAD//wwAAAAAAAIAAAD+/w4AAAAAAAIAAAD+/w0AAAAAAAIAAAD+/wwAAAAAAAIAAAD9/w4AAAAAAAIAAAD9/w0AAAAAAAIAAAD9/wwAAAAAAAIAAAD8/w4AAAAAAAIAAAD8/w0AAAAAAAIAAAD8/wwAAAAAAAIAAAD7/w4AAAAAAAIAAAD7/w0AAAAAAAIAAAD7/wwAAAAAAAIAAAD6/w4AAAAAAAIAAAD6/w0AAAAAAAIAAAD6/wwAAAAAAAIAAAD5/w4AAAAAAAIAAAD5/w0AAAAAAAIAAAD5/wwAAAAAAAIAAAD4/w4AAAAAAAIAAAD4/w0AAAAAAAIAAAD4/wwAAAAAAAIAAAD3/w4AAAAAAAIAAAD3/w0AAAAAAAIAAAD3/wwAAAAAAAIAAAD2/w4AAAAAAAIAAAD2/w0AAAAAAAIAAAD2/wwAAAAAAAIAAAD1/w4AAAAAAAAAAAD1/w0AAAAAAAAAAAD1/wwAAAAAAAAAAAD0/woAAAAAAAAAAAD0/wkAAAAAAAAAAAD0/wgAAAAAAAAAAAD0/wcAAAAAAAAAAAD0/wYAAAAAAAAAAAD0/w4AAAAAAAAAAAD0/w0AAAAAAAAAAAD0/wwAAAAAAAAAAAD0/wsAAAAAAAAAAAAFAA8AAAAAAAEAAAAEAA8AAAAAAAEAAAADAA8AAAAAAAEAAAACAA8AAAAAAAEAAAABAA8AAAAAAAEAAAAAAA8AAAAAAAEAAAD//w8AAAAAAAEAAAD+/w8AAAAAAAEAAAD9/w8AAAAAAAEAAAD8/w8AAAAAAAEAAAD7/w8AAAAAAAEAAAD6/w8AAAAAAAEAAAD5/w8AAAAAAAEAAAD4/w8AAAAAAAEAAAD3/w8AAAAAAAEAAAD2/w8AAAAAAAEAAAD1/w8AAAAAAAEAAAD0/w8AAAAAAAEAAAAFAA4AAAAAAAAAAAAFAA0AAAAAAAAAAAAFAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD2/wgAAAAAAAEAAAD3/wgAAAAAAAEAAAD4/wgAAAAAAAEAAAD5/wgAAAAAAAEAAAD6/wcAAAAAAAAAAAD7/wcAAAAAAAAAAAD8/wcAAAAAAAAAAAD9/wcAAAAAAAAAAAD+/wcAAAAAAAAAAAD//wcAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAgAAAAAAAEAAAADAAgAAAAAAAEAAAABAAgAAAAAAAEAAAAAAAgAAAAAAAEAAAD//wgAAAAAAAEAAAD+/wgAAAAAAAEAAAD9/wgAAAAAAAEAAAD8/wgAAAAAAAEAAAD7/wgAAAAAAAEAAAD6/wgAAAAAAAEAAAD5/wcAAAAAAAAAAAD4/wcAAAAAAAAAAAD3/wcAAAAAAAAAAAD2/wcAAAAAAAAAAAD5/wYAAAAAAAAAAAD6/wYAAAAAAAAAAAD7/wYAAAAAAAAAAAD8/wYAAAAAAAAAAAD9/wYAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAD3/wYAAAAAAAAAAAD2/wYAAAAAAAAAAAD4/wYAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAEAAAD1/wYAAAAAAAAAAAD1/wcAAAAAAAAAAAD1/wkAAAAAAAIAAAD2/wkAAAAAAAIAAAD3/wkAAAAAAAIAAAD4/wkAAAAAAAIAAAD5/wkAAAAAAAIAAAD6/wkAAAAAAAIAAAD7/wkAAAAAAAIAAAD8/wkAAAAAAAIAAAD9/wkAAAAAAAIAAAD+/wkAAAAAAAIAAAD//wkAAAAAAAIAAAAAAAkAAAAAAAIAAAABAAkAAAAAAAIAAAACAAkAAAAAAAIAAAADAAkAAAAAAAIAAAAEAAkAAAAAAAIAAAD1/woAAAAAAAIAAAD2/woAAAAAAAIAAAD3/woAAAAAAAIAAAD4/woAAAAAAAIAAAD5/woAAAAAAAIAAAD6/woAAAAAAAIAAAD7/woAAAAAAAIAAAD8/woAAAAAAAIAAAD9/woAAAAAAAIAAAD+/woAAAAAAAIAAAD//woAAAAAAAIAAAD//wsAAAAAAAIAAAAAAAsAAAAAAAIAAAAAAAoAAAAAAAIAAAABAAoAAAAAAAIAAAACAAoAAAAAAAIAAAADAAoAAAAAAAIAAAAEAAoAAAAAAAIAAAAEAAsAAAAAAAIAAAADAAsAAAAAAAIAAAABAAsAAAAAAAIAAAD+/wsAAAAAAAIAAAD9/wsAAAAAAAIAAAD4/wsAAAAAAAIAAAD3/wsAAAAAAAIAAAD2/wsAAAAAAAIAAAD1/wsAAAAAAAIAAAACAAsAAAAAAAIAAAD7/wsAAAAAAAIAAAD8/wsAAAAAAAIAAAD6/wsAAAAAAAIAAAD5/wsAAAAAAAIAAAAEAA4AAAAAAAIAAAAEAA0AAAAAAAIAAAAEAAwAAAAAAAIAAAADAA4AAAAAAAIAAAADAA0AAAAAAAIAAAADAAwAAAAAAAIAAAACAA4AAAAAAAIAAAACAA0AAAAAAAIAAAACAAwAAAAAAAIAAAABAA4AAAAAAAIAAAABAA0AAAAAAAIAAAABAAwAAAAAAAIAAAAAAA4AAAAAAAIAAAAAAA0AAAAAAAIAAAAAAAwAAAAAAAIAAAD//w4AAAAAAAIAAAD//w0AAAAAAAIAAAD//wwAAAAAAAIAAAD+/w4AAAAAAAIAAAD+/w0AAAAAAAIAAAD+/wwAAAAAAAIAAAD9/w4AAAAAAAIAAAD9/w0AAAAAAAIAAAD9/wwAAAAAAAIAAAD8/w4AAAAAAAIAAAD8/w0AAAAAAAIAAAD8/wwAAAAAAAIAAAD7/w4AAAAAAAIAAAD7/w0AAAAAAAIAAAD7/wwAAAAAAAIAAAD6/w4AAAAAAAIAAAD6/w0AAAAAAAIAAAD6/wwAAAAAAAIAAAD5/w4AAAAAAAIAAAD5/w0AAAAAAAIAAAD5/wwAAAAAAAIAAAD4/w4AAAAAAAIAAAD4/w0AAAAAAAIAAAD4/wwAAAAAAAIAAAD3/w4AAAAAAAIAAAD3/w0AAAAAAAIAAAD3/wwAAAAAAAIAAAD2/w4AAAAAAAIAAAD2/w0AAAAAAAIAAAD2/wwAAAAAAAIAAAD1/w4AAAAAAAIAAAD1/w0AAAAAAAIAAAD1/wwAAAAAAAIAAAD0/woAAAAAAAAAAAD0/wkAAAAAAAAAAAD0/wgAAAAAAAAAAAD0/wcAAAAAAAAAAAD0/wYAAAAAAAAAAAD0/w4AAAAAAAAAAAD0/w0AAAAAAAAAAAD0/wwAAAAAAAAAAAD0/wsAAAAAAAAAAAAFAA8AAAAAAAAAAAAEAA8AAAAAAAIAAAADAA8AAAAAAAIAAAACAA8AAAAAAAIAAAABAA8AAAAAAAIAAAAAAA8AAAAAAAIAAAD//w8AAAAAAAIAAAD+/w8AAAAAAAIAAAD9/w8AAAAAAAIAAAD8/w8AAAAAAAIAAAD7/w8AAAAAAAIAAAD6/w8AAAAAAAIAAAD5/w8AAAAAAAIAAAD4/w8AAAAAAAIAAAD3/w8AAAAAAAIAAAD2/w8AAAAAAAIAAAD1/w8AAAAAAAIAAAD0/w8AAAAAAAAAAAAFAA4AAAAAAAAAAAAFAA0AAAAAAAAAAAAFAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAD1/wgAAAAAAAEAAAAFABAAAAAAAAEAAAAEABAAAAAAAAEAAAADABAAAAAAAAEAAAACABAAAAAAAAEAAAABABAAAAAAAAEAAAAAABAAAAAAAAEAAAD//xAAAAAAAAEAAAD+/xAAAAAAAAEAAAD9/xAAAAAAAAEAAAD8/xAAAAAAAAEAAAD7/xAAAAAAAAEAAAD6/xAAAAAAAAEAAAD5/xAAAAAAAAEAAAD0/xAAAAAAAAEAAAD1/xAAAAAAAAEAAAD2/xAAAAAAAAEAAAD3/xAAAAAAAAEAAAD4/xAAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_8hre3")
 
 [node name="Player" parent="." unique_id=1915309905 instance=ExtResource("1_804co")]
 z_index = 1
-position = Vector2(-46, 166)
+position = Vector2(26, 146)
 active = false
 direction = Vector2(0, -1)
 
 [node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("2_hxfkh")]
 top_level = true
 z_index = 1
+rotation = -0.010615096
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2109780236]
 visible = false
@@ -166,10 +224,31 @@ color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2026176802]
 position = Vector2(-49, 178)
-zoom = Vector2(5, 5)
+zoom = Vector2(4, 4)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=912497528]
 root_node = NodePath("../TileMapLayer")
 libraries/ = SubResource("AnimationLibrary_amwks")
 
+[node name="Tocadiscos" parent="." unique_id=66310711 instance=ExtResource("2_amwks")]
+position = Vector2(-127, 141)
+texture = ExtResource("7_psj36")
+hframes = 7
+
+[node name="CortinaYCuadro" parent="." unique_id=1917869702 instance=ExtResource("2_amwks")]
+position = Vector2(24, 136)
+texture = ExtResource("1_hxfkh")
+
+[node name="Pishito" parent="." unique_id=1471082289 instance=ExtResource("2_amwks")]
+position = Vector2(-214, 196)
+scale = Vector2(0.39902362, 0.39902362)
+
+[node name="AutoRoto" parent="." unique_id=535368607 instance=ExtResource("2_amwks")]
+visible = false
+position = Vector2(24, 218)
+
+[connection signal="interact" from="ChicaQueBaila" to="." method="_on_chica_que_baila_interact"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="interact" from="Tocadiscos" to="." method="_on_tocadiscos_interact"]
+[connection signal="interact" from="CortinaYCuadro" to="." method="_on_cortina_y_cuadro_interact"]
+[connection signal="interact" from="Pishito" to="." method="_on_pishito_interact"]
