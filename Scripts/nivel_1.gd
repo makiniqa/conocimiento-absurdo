@@ -26,17 +26,17 @@ func _process(_delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "enter_level":
-		$DialogueBox.queue_display_text("holiii, estoy en busqueda de dios OwO", DialogueBox.default_talking_speed)
-		$DialogueBox.queue_display_text("el mismo me dijo que vive acá owo pero no se que onda", DialogueBox.default_talking_speed)
+		$DialogueBox.queue_display_text("holiii, estoy en busqueda de dios >:)", DialogueBox.default_talking_speed)
+		$DialogueBox.queue_display_text("él mismo me dijo que vive acá pero no sé qué onda", DialogueBox.default_talking_speed)
 		$DialogueBox.queue_display_text("es re raro este lugar...", DialogueBox.default_talking_speed)
-		$DialogueBox.queue_display_text("Oh esperá...", DialogueBox.default_talking_speed)
-		$DialogueBox.queue_display_text("me está intentando hablando ahora mismo! :DDD", DialogueBox.default_talking_speed)
+		$DialogueBox.queue_display_text("uh bancá...", DialogueBox.default_talking_speed)
+		$DialogueBox.queue_display_text("me está intentando hablar ahora mismo! :DDD", DialogueBox.default_talking_speed)
 		$DialogueBox.queue_display_text("...", DialogueBox.default_talking_speed*0.25, "silence")
 		$DialogueBox.queue_display_text("CIGARRILLO.", DialogueBox.default_talking_speed*0.5, "god")
 		$DialogueBox.queue_display_text("ENGAÑO.", DialogueBox.default_talking_speed*0.5, "god")
 		$DialogueBox.queue_display_text("MARCADOR.", DialogueBox.default_talking_speed*0.5, "god")
 		$DialogueBox.queue_display_text("...", DialogueBox.default_talking_speed*0.5, "silence")
-		$DialogueBox.queue_display_text("me pregunto que significará esto :O", DialogueBox.default_talking_speed)
+		$DialogueBox.queue_display_text("me pregunto qué significará esto :O", DialogueBox.default_talking_speed)
 
 
 func _on_dialogue_box_end_queue() -> void:
@@ -45,15 +45,15 @@ func _on_dialogue_box_end_queue() -> void:
 func _on_interactuable_interact() -> void:
 	$Player.active = false
 	if not hablaste_con_libreria:
-		$DialogueBox.queue_display_text("Que haces pibe, tenés un cigarro para convidar?", DialogueBox.default_talking_speed, "ah")  
-		$DialogueBox.queue_display_text("disculpa no fumo", DialogueBox.default_talking_speed)
+		$DialogueBox.queue_display_text("qué hacés pibe, tenés un cigarro para convidar?", DialogueBox.default_talking_speed, "ah")  
+		$DialogueBox.queue_display_text("disculpá no fumo", DialogueBox.default_talking_speed)
 	elif not hablaste_con_orcnella:
 		$DialogueBox.queue_display_text("che el de la librería quiere que te vayas", DialogueBox.default_talking_speed)
 		$DialogueBox.queue_display_text("decile a ese gil que si me convida un pucho me voy", DialogueBox.default_talking_speed, "ah")  
 		$DialogueBox.queue_display_text("weno", DialogueBox.default_talking_speed)
 		hablaste_con_orcnella = true
 	elif not personita_tiene_hojita or not personita_tiene_marcadores:
-		$DialogueBox.queue_display_text("si no tenes un cigarrillo tocá de acá pibe", DialogueBox.default_talking_speed, "ah")
+		$DialogueBox.queue_display_text("si no tenés un cigarrillo tocá de acá pibe", DialogueBox.default_talking_speed, "ah")
 	else:
 		$DialogueBox.queue_display_text("holi acá tengo un cigarrillo", DialogueBox.default_talking_speed)
 		$DialogueBox.queue_display_text("eeh gracias", DialogueBox.default_talking_speed, "ah")
@@ -79,7 +79,7 @@ func _on_libreria_interact() -> void:
 	elif not hablaste_con_libreria:
 		$DialogueBox.queue_display_text("hola cómo va, somos una librería", DialogueBox.default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("no tenemos muchos clientes por acá", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("la vieja esa los espanta a todes u.u", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("la vieja ésa los espanta a todes u.u", DialogueBox.default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("buee pero no seas malo con ella :(", DialogueBox.default_talking_speed)
 		$DialogueBox.queue_display_text("como sea, cuchame", DialogueBox.default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("te doy lo que quieras si lográs que esa wacha se vaya", DialogueBox.default_talking_speed, "honk")
@@ -115,7 +115,7 @@ func _on_manzana_interact() -> void:
 		$DialogueBox.queue_display_text("pero gracias tenía hambre", DialogueBox.default_talking_speed, "honk")
 	else:
 		$DialogueBox.queue_display_text("una suculenta manzana", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("no tenés hambre.", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("no tenés hambre", DialogueBox.default_talking_speed, "honk")
 
 func _on_moneda_interact() -> void:
 	$Player.active = false
@@ -139,7 +139,7 @@ func _on_gatito_interact() -> void:
 func _on_kiosko_interact() -> void:
 	$Player.active = false
 	if hablaste_con_libreria and not puerta_desbloqueada:
-		$DialogueBox.queue_display_text("capo tendrás un paquete de cigarrillos?", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("capo no tendrás un paquete de cigarrillos?", DialogueBox.default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("no máster recién se me acabaron", DialogueBox.default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("pero tengo para cargarte la SUBE", DialogueBox.default_talking_speed, "honk")
 	else:
