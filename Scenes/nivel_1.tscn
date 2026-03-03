@@ -9,8 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://caxpriv3c766y" path="res://Scenes/dialogue_box.tscn" id="6_jmhww"]
 [ext_resource type="Texture2D" uid="uid://efqlkf0cx6dv" path="res://Objects/hojita.png" id="7_kyajb"]
 [ext_resource type="Texture2D" uid="uid://d2e005av4uugj" path="res://Characters/libreria.png" id="8_ql53f"]
+[ext_resource type="Texture2D" uid="uid://ci8h3vorw0mmh" path="res://Objects/vuvucela.png" id="9_p3mfg"]
 [ext_resource type="Texture2D" uid="uid://cpsd82px4s5yy" path="res://Objects/Egg item.png" id="9_xvap8"]
+[ext_resource type="Texture2D" uid="uid://b6h8oie1uppwf" path="res://Objects/manzana.png" id="10_gh6o0"]
 [ext_resource type="Texture2D" uid="uid://vign6g821b60" path="res://Characters/kiosko.png" id="10_rjvxo"]
+[ext_resource type="Texture2D" uid="uid://b1x2fdu6cvvcb" path="res://Objects/moneda.png" id="11_t31ra"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_820xk"]
 texture = ExtResource("1_3givb")
@@ -752,15 +755,15 @@ shape = SubResource("RectangleShape2D_rjvxo")
 
 [node name="Vuvuzela" parent="." unique_id=458951742 instance=ExtResource("4_22i05")]
 position = Vector2(-221, -16)
-texture = ExtResource("9_xvap8")
+texture = ExtResource("9_p3mfg")
 
 [node name="Manzana" parent="." unique_id=353815338 instance=ExtResource("4_22i05")]
 position = Vector2(-20, 81)
-texture = ExtResource("9_xvap8")
+texture = ExtResource("10_gh6o0")
 
 [node name="Moneda" parent="." unique_id=1417835234 instance=ExtResource("4_22i05")]
 position = Vector2(43, 0)
-texture = ExtResource("9_xvap8")
+texture = ExtResource("11_t31ra")
 
 [node name="Gatito" parent="." unique_id=1661824083 instance=ExtResource("4_22i05")]
 position = Vector2(-155, 87)
