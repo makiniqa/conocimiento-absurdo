@@ -90,13 +90,33 @@ func _on_libreria_interact() -> void:
 
 func _on_vuvuzela_interact() -> void:
 	$Player.active = false
-	$Vuvuzela.queue_free()
-	$DialogueBox.queue_display_text("*hacés un montón de ruido*", DialogueBox.default_talking_speed, "honk")
-	$DialogueBox.queue_display_text("pero la vieja no se inmuta", DialogueBox.default_talking_speed, "honk")
+	if hablaste_con_orcnella:
+		$Vuvuzela.queue_free()
+		$DialogueBox.queue_display_text("*hacés un montón de ruido*", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("pero la vieja no se inmuta", DialogueBox.default_talking_speed, "honk")
+	else:
+		$DialogueBox.queue_display_text("una vuvuzela", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("cómo odiás estas vergas", DialogueBox.default_talking_speed, "honk")
 
 func _on_manzana_interact() -> void:
 	$Player.active = false
-	$Manzana.queue_free()
-	$DialogueBox.queue_display_text("*le tirás una manzana en la cabeza a la vieja*", DialogueBox.default_talking_speed, "honk")
-	$DialogueBox.queue_display_text("bueno tus modales no son los mejores pibe", DialogueBox.default_talking_speed, "honk")
-	$DialogueBox.queue_display_text("pero gracias tenía hambre", DialogueBox.default_talking_speed, "honk")
+	if hablaste_con_orcnella:
+		$Manzana.queue_free()
+		$DialogueBox.queue_display_text("*le tirás una manzana en la cabeza a la vieja*", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("bueno tus modales no son los mejores pibe", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("pero gracias tenía hambre", DialogueBox.default_talking_speed, "honk")
+	else:
+		$DialogueBox.queue_display_text("una suculenta manzana", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("no tenés hambre.", DialogueBox.default_talking_speed, "honk")
+
+func _on_moneda_interact() -> void:
+	$Player.active = false
+	if hablaste_con_orcnella:
+		$Moneda.queue_free()
+		$DialogueBox.queue_display_text("*tirás la moneda del otro lado de la cerca*", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("che vieja", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("mirá hay plata por allá", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("no creo en el dinero pibe", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("ni en los microondas", DialogueBox.default_talking_speed, "honk")
+	else:
+		$DialogueBox.queue_display_text("uia, platita", DialogueBox.default_talking_speed, "honk")

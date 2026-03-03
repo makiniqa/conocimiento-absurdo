@@ -744,6 +744,10 @@ texture = ExtResource("9_xvap8")
 position = Vector2(-20, 81)
 texture = ExtResource("9_xvap8")
 
+[node name="Moneda" parent="." unique_id=1417835234 instance=ExtResource("4_22i05")]
+position = Vector2(43, 0)
+texture = ExtResource("9_xvap8")
+
 [node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("6_jmhww")]
 top_level = true
 y_sort_enabled = true
@@ -769,5 +773,6 @@ libraries/ = SubResource("AnimationLibrary_22i05")
 [connection signal="interact" from="libreria" to="." method="_on_libreria_interact"]
 [connection signal="interact" from="Vuvuzela" to="." method="_on_vuvuzela_interact"]
 [connection signal="interact" from="Manzana" to="." method="_on_manzana_interact"]
+[connection signal="interact" from="Moneda" to="." method="_on_moneda_interact"]
 [connection signal="endQueue" from="DialogueBox" to="." method="_on_dialogue_box_end_queue"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
