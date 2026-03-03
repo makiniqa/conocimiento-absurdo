@@ -6,6 +6,7 @@ var hablaste_con_libreria := false
 var hablaste_con_orcnella := false
 var personita_tiene_hojita := false
 var personita_tiene_marcadores := false
+var puerta_desbloqueada := false
 
 func _ready():
 	$AnimationPlayer.play("enter_level")
@@ -59,6 +60,7 @@ func _on_interactuable_interact() -> void:
 		$DialogueBox.set_callable_on_queue_end(
 			func (): $AnimationPlayer.play("la bruja se va")
 		)
+		puerta_desbloqueada = true
 		$AnimatedGate.active = true
 func _on_hojita_interact() -> void:
 	$Player.active = false
@@ -68,7 +70,9 @@ func _on_hojita_interact() -> void:
 
 func _on_libreria_interact() -> void:
 	$Player.active = false
-	if not hablaste_con_libreria:
+	if puerta_desbloqueada:
+		$DialogueBox.queue_display_text("te debo la vida pibe", DialogueBox.default_talking_speed, "honk")
+	elif not hablaste_con_libreria:
 		$DialogueBox.queue_display_text("hola cómo va, somos una librería", DialogueBox.default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("no tenemos muchos clientes por acá", DialogueBox.default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("la vieja esa los espanta a todes u.u", DialogueBox.default_talking_speed, "honk")
@@ -90,7 +94,7 @@ func _on_libreria_interact() -> void:
 
 func _on_vuvuzela_interact() -> void:
 	$Player.active = false
-	if hablaste_con_orcnella:
+	if hablaste_con_orcnella and not puerta_desbloqueada:
 		$Vuvuzela.queue_free()
 		$DialogueBox.queue_display_text("*hacés un montón de ruido*", DialogueBox.default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("pero la vieja no se inmuta", DialogueBox.default_talking_speed, "honk")
@@ -100,7 +104,7 @@ func _on_vuvuzela_interact() -> void:
 
 func _on_manzana_interact() -> void:
 	$Player.active = false
-	if hablaste_con_orcnella:
+	if hablaste_con_orcnella and not puerta_desbloqueada:
 		$Manzana.queue_free()
 		$DialogueBox.queue_display_text("*le tirás una manzana en la cabeza a la vieja*", DialogueBox.default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("bueno tus modales no son los mejores pibe", DialogueBox.default_talking_speed, "honk")
@@ -111,7 +115,7 @@ func _on_manzana_interact() -> void:
 
 func _on_moneda_interact() -> void:
 	$Player.active = false
-	if hablaste_con_orcnella:
+	if hablaste_con_orcnella and not puerta_desbloqueada:
 		$Moneda.queue_free()
 		$DialogueBox.queue_display_text("*tirás la moneda del otro lado de la cerca*", DialogueBox.default_talking_speed, "honk")
 		$DialogueBox.queue_display_text("che vieja", DialogueBox.default_talking_speed, "honk")
@@ -120,3 +124,22 @@ func _on_moneda_interact() -> void:
 		$DialogueBox.queue_display_text("ni en los microondas", DialogueBox.default_talking_speed, "honk")
 	else:
 		$DialogueBox.queue_display_text("uia, platita", DialogueBox.default_talking_speed, "honk")
+
+
+func _on_gatito_interact() -> void:
+	$Player.active = false
+	$DialogueBox.queue_display_text("miaaaauuuuuu", DialogueBox.default_talking_speed, "honk")
+	$DialogueBox.queue_display_text("digo guau", DialogueBox.default_talking_speed, "honk")
+
+
+func _on_kiosko_interact() -> void:
+	$Player.active = false
+	if hablaste_con_libreria and not puerta_desbloqueada:
+		$DialogueBox.queue_display_text("capo tendrás un paquete de cigarrillos?", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("no máster recién se me acabaron", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("pero tengo para cargarte la SUBE", DialogueBox.default_talking_speed, "honk")
+	else:
+		$DialogueBox.queue_display_text("hoy hay 5x1 en guaymallén de fruta", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("mm otro día rey", DialogueBox.default_talking_speed, "honk")
+		$DialogueBox.queue_display_text("vos te la perdés", DialogueBox.default_talking_speed, "honk")
+	

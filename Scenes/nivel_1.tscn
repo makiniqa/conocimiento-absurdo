@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://efqlkf0cx6dv" path="res://Objects/hojita.png" id="7_kyajb"]
 [ext_resource type="Texture2D" uid="uid://d2e005av4uugj" path="res://Characters/libreria.png" id="8_ql53f"]
 [ext_resource type="Texture2D" uid="uid://cpsd82px4s5yy" path="res://Objects/Egg item.png" id="9_xvap8"]
+[ext_resource type="Texture2D" uid="uid://vign6g821b60" path="res://Characters/kiosko.png" id="10_rjvxo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_820xk"]
 texture = ExtResource("1_3givb")
@@ -567,6 +568,9 @@ size = Vector2(43, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjvxo"]
 size = Vector2(62.341957, 15.917095)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61jm7"]
+size = Vector2(62.83637, 16.290897)
+
 [sub_resource type="Animation" id="Animation_22i05"]
 length = 0.001
 
@@ -707,7 +711,7 @@ tile_map_data = PackedByteArray("AAD+/wEAAAAFAAYAAAD//wEAAAABAAUAAAD//wAAAAABAAE
 tile_set = SubResource("TileSet_l2piy")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=240074665]
-tile_map_data = PackedByteArray("AAD2//v/AAACAAMAAAD2/wsAAAACAAMAAAADAPv/AAADAAAAAAADAAsAAAADAAIAAAD3/wsAAAACAAMAAAD4/wsAAAACAAMAAAD5/wsAAAACAAMAAAD6/wsAAAACAAMAAAD7/wsAAAACAAMAAAD8/wsAAAACAAMAAAD9/wsAAAACAAMAAAD+/wsAAAACAAMAAAD//wsAAAACAAMAAAAAAAsAAAACAAMAAAABAAsAAAACAAMAAAACAAsAAAACAAMAAAD3//v/AAACAAMAAAD4//v/AAACAAMAAAD5//v/AAACAAMAAAD6//v/AAACAAMAAAD7//v/AAACAAMAAAD8//v/AAACAAMAAAD9//v/AAACAAMAAAD+//v/AAACAAMAAAD///v/AAACAAMAAAAAAPv/AAACAAMAAAABAPv/AAACAAMAAAACAPv/AAACAAMAAAADAPz/AAAAAAEAAAADAP3/AAAAAAEAAAADAP7/AAAAAAEAAAADAP//AAAAAAEAAAADAAAAAAAAAAEAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAADAAMAAAAAAAEAAAADAAQAAAAAAAEAAAADAAUAAAAAAAEAAAADAAYAAAAAAAEAAAADAAcAAAAAAAEAAAADAAgAAAAAAAEAAAADAAkAAAAAAAEAAAADAAoAAAAAAAEAAAD1/wsAAAACAAMAAAD0/wsAAAACAAMAAADz/wsAAAACAAMAAADy/wsAAAACAAMAAADx/wsAAAACAAMAAADw/wsAAAACAAMAAADv/wsAAAACAAMAAADx//v/AAACAAMAAADw//v/AAACAAMAAADv//v/AAACAAMAAADu//v/AAABAAAAAADu/wsAAAABAAIAAADu/woAAAAAAAEAAADu/wkAAAAAAAEAAADu/wgAAAAAAAEAAADu/wcAAAAAAAEAAADu/wYAAAAAAAEAAADu/wUAAAAAAAEAAADu/wQAAAAAAAEAAADu/wMAAAAAAAEAAADu/wIAAAAAAAEAAADu/wEAAAAAAAEAAADu/wAAAAAAAAEAAADu////AAAAAAEAAADu//7/AAAAAAEAAADu//3/AAAAAAEAAADu//z/AAAAAAEAAADy//v/AAACAAMAAAA=")
+tile_map_data = PackedByteArray("AAD2//v/AAACAAMAAAD2/wsAAAACAAMAAAADAPv/AAADAAAAAAADAAsAAAADAAIAAAD3/wsAAAACAAMAAAD4/wsAAAACAAMAAAD5/wsAAAACAAMAAAD6/wsAAAACAAMAAAD7/wsAAAACAAMAAAD8/wsAAAACAAMAAAD9/wsAAAACAAMAAAD+/wsAAAACAAMAAAD//wsAAAACAAMAAAAAAAsAAAACAAMAAAABAAsAAAACAAMAAAACAAsAAAACAAMAAAD3//v/AAACAAMAAAD4//v/AAACAAMAAAD5//v/AAACAAMAAAD6//v/AAACAAMAAAD7//v/AAACAAMAAAD///v/AAACAAMAAAAAAPv/AAACAAMAAAABAPv/AAACAAMAAAACAPv/AAACAAMAAAADAPz/AAAAAAEAAAADAP3/AAAAAAEAAAADAP7/AAAAAAEAAAADAP//AAAAAAEAAAADAAAAAAAAAAEAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAADAAMAAAAAAAEAAAADAAQAAAAAAAEAAAADAAUAAAAAAAEAAAADAAYAAAAAAAEAAAADAAcAAAAAAAEAAAADAAgAAAAAAAEAAAADAAkAAAAAAAEAAAADAAoAAAAAAAEAAAD1/wsAAAACAAMAAAD0/wsAAAACAAMAAADz/wsAAAACAAMAAADy/wsAAAACAAMAAADx/wsAAAACAAMAAADw/wsAAAACAAMAAADv/wsAAAACAAMAAADx//v/AAACAAMAAADw//v/AAACAAMAAADv//v/AAACAAMAAADu//v/AAABAAAAAADu/wsAAAABAAIAAADu/woAAAAAAAEAAADu/wkAAAAAAAEAAADu/wgAAAAAAAEAAADu/wcAAAAAAAEAAADu/wYAAAAAAAEAAADu/wUAAAAAAAEAAADu/wQAAAAAAAEAAADu/wMAAAAAAAEAAADu/wIAAAAAAAEAAADu/wEAAAAAAAEAAADu/wAAAAAAAAEAAADu////AAAAAAEAAADu//7/AAAAAAEAAADu//3/AAAAAAEAAADu//z/AAAAAAEAAADy//v/AAACAAMAAAA=")
 tile_set = SubResource("TileSet_3wii6")
 
 [node name="AnimatedGate" parent="." unique_id=2047117113 instance=ExtResource("5_hwnlj")]
@@ -758,6 +762,22 @@ texture = ExtResource("9_xvap8")
 position = Vector2(43, 0)
 texture = ExtResource("9_xvap8")
 
+[node name="Gatito" parent="." unique_id=1661824083 instance=ExtResource("4_22i05")]
+position = Vector2(-102, 134)
+texture = ExtResource("9_xvap8")
+
+[node name="Kiosko" parent="." unique_id=810447935 instance=ExtResource("4_22i05")]
+position = Vector2(-40.000004, -98.00001)
+scale = Vector2(0.859375, 0.859375)
+texture = ExtResource("10_rjvxo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Kiosko" unique_id=498371615]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kiosko/StaticBody2D" unique_id=834794658]
+position = Vector2(7.6293945e-06, 10.472733)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_61jm7")
+
 [node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("6_jmhww")]
 top_level = true
 y_sort_enabled = true
@@ -784,5 +804,7 @@ libraries/ = SubResource("AnimationLibrary_22i05")
 [connection signal="interact" from="Vuvuzela" to="." method="_on_vuvuzela_interact"]
 [connection signal="interact" from="Manzana" to="." method="_on_manzana_interact"]
 [connection signal="interact" from="Moneda" to="." method="_on_moneda_interact"]
+[connection signal="interact" from="Gatito" to="." method="_on_gatito_interact"]
+[connection signal="interact" from="Kiosko" to="." method="_on_kiosko_interact"]
 [connection signal="endQueue" from="DialogueBox" to="." method="_on_dialogue_box_end_queue"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
