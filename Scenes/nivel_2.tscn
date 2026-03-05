@@ -7,9 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://8uxtk230fq3h" path="res://Characters/baile-Sheet.png" id="3_psj36"]
 [ext_resource type="Texture2D" uid="uid://be48xclh8kdm6" path="res://Objects/level2tiles.png" id="4_2wi6x"]
 [ext_resource type="Texture2D" uid="uid://nh7ydjvitcr8" path="res://Objects/tocadiscos-Sheet.png" id="7_psj36"]
-[ext_resource type="Texture2D" uid="uid://cped5qem5emt8" path="res://Objects/animacion cortina-Sheet.png" id="8_2wi6x"]
+[ext_resource type="Texture2D" uid="uid://ch1gx3pmr7lft" path="res://Objects/car-Sheet.png" id="8_paidj"]
 [ext_resource type="Texture2D" uid="uid://c3jg4f0hrujw2" path="res://Objects/cuadro de auto-Sheet.png" id="9_k5g52"]
 [ext_resource type="Texture2D" uid="uid://byvhayeoncn4s" path="res://Characters/doggo-Sheet.png" id="9_pot7g"]
+[ext_resource type="SpriteFrames" uid="uid://mnmyvava6cgj" path="res://Objects/Cortinas.tres" id="9_qeet1"]
+[ext_resource type="Texture2D" uid="uid://bowlcfdjhhtcx" path="res://Objects/cuadro de auto.png" id="10_3qbs7"]
+[ext_resource type="Texture2D" uid="uid://bb7bpl6h0wlp6" path="res://Objects/auto.png" id="11_mgy73"]
+[ext_resource type="Texture2D" uid="uid://c4lddd5lp61rd" path="res://Objects/rueda.png" id="14_qeet1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_psj36"]
 atlas = ExtResource("3_psj36")
@@ -81,6 +85,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qeet1"]
+size = Vector2(14.31439, 13.268088)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pot7g"]
 texture = ExtResource("4_2wi6x")
@@ -178,6 +185,190 @@ tracks/3/keys = {
 "update": 1,
 "values": [&"Run"]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CortinaYCuadro/Auto:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, 108.99999)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CortinaYCuadro/Auto:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../AutoRoto/Chapa:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-26.72315, -14.147551)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Player:direction")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../AutoRoto/Chapa:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Pishito/AnimatedSprite2D:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-28.687756, 12.294752)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../ChicaQueBaila:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-80, 141)]
+}
+
+[sub_resource type="Animation" id="Animation_qeet1"]
+resource_name = "TirarChapa"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Player:direction")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(-1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 224)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AutoRoto/Chapa:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.33),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AutoRoto/Chapa:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.5, 0.76666665, 1.02),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-26.72315, -14.147551), Vector2(-58.16215, -17.291454), Vector2(-94.31701, -40.870705), Vector2(-229.50471, -40.870705), Vector2(-414.9948, -15.719503)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Pishito:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 198)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Pishito/AnimatedSprite2D:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.35, 3.9666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Pishito/AnimatedSprite2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.0666667, 2.1566668, 2.72, 3.9566667, 6.992276),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-467.2006, 49.17901), Vector2(-856.5344, 81.96501), Vector2(-856.5344, 81.96501), Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Pishito/AnimatedSprite2D:animation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.0666667, 3.9666667, 6.992276),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [&"Idle", &"Run", &"RunWithCD", &"IdleWithCD"]
+}
 
 [sub_resource type="Animation" id="Animation_pot7g"]
 resource_name = "aparecePerritoWaf"
@@ -229,10 +420,10 @@ tracks/0/path = NodePath("../Player:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"times": PackedFloat32Array(-0.6, 0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(26, 146), Vector2(4, 174), Vector2(-12, 200.00002), Vector2(-28, 226)]
+"values": [Vector2(-28, 226), Vector2(26, 146), Vector2(4, 174), Vector2(-12, 200.00002)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -245,6 +436,82 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.873169, -3.0457876, -3.1415927, -3.1415927, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CortinaYCuadro/Auto:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CortinaYCuadro/Auto:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6.000002, 11.999999), Vector2(7, 108.99999)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AutoRoto:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CortinaYCuadro/PinturaAuto:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"SinAuto"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../AutoRoto/Chapa:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.7666667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-6.2878003, -15.719501), Vector2(-26.72315, -14.147551)]
+}
+
+[sub_resource type="Animation" id="Animation_k6xhl"]
+resource_name = "chicaSeVa"
+length = 3.982535
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ChicaQueBaila:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5884845, 1.3275117, 2.0391674, 2.668709, 3.5309074, 3.982535),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-80, 141), Vector2(-67, 182), Vector2(-87, 202.00002), Vector2(-68.00001, 224), Vector2(-87, 250), Vector2(-79.00001, 271), Vector2(-107.00001, 301)]
 }
 
 [sub_resource type="Animation" id="Animation_8hre3"]
@@ -293,8 +560,10 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_amwks"]
 _data = {
 &"RESET": SubResource("Animation_kkyht"),
+&"TirarChapa": SubResource("Animation_qeet1"),
 &"aparecePerritoWaf": SubResource("Animation_pot7g"),
 &"atropellao": SubResource("Animation_psj36"),
+&"chicaSeVa": SubResource("Animation_k6xhl"),
 &"enter_level": SubResource("Animation_8hre3"),
 &"preatropellao": SubResource("Animation_2wi6x")
 }
@@ -361,131 +630,32 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sselb"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(0, 0, 16, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkfl3"]
+atlas = ExtResource("8_paidj")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqjfd"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(16, 0, 16, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_42yjo"]
+atlas = ExtResource("8_paidj")
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ch1bu"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(32, 0, 16, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pslfc"]
+atlas = ExtResource("8_paidj")
+region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6t2vw"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q2wrw"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(64, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0lbw6"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(80, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dcek2"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(96, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jnvvv"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(112, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wdkcd"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(128, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u4ixc"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(144, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_po3bs"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(160, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dx6ib"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(176, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jhq2d"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(192, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cbb4l"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(208, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ce1g"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(224, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ikeig"]
-atlas = ExtResource("8_2wi6x")
-region = Rect2(240, 0, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_psj36"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_4s7qx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sselb")
+"texture": SubResource("AtlasTexture_pkfl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42yjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pslfc")
 }],
 "loop": true,
-"name": &"closed",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sselb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sqjfd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ch1bu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6t2vw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q2wrw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0lbw6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dcek2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jnvvv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wdkcd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u4ixc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_po3bs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dx6ib")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jhq2d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cbb4l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ce1g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ikeig")
-}],
-"loop": false,
-"name": &"open",
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -525,6 +695,14 @@ region = Rect2(448, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("10_3qbs7")
+}],
+"loop": true,
+"name": &"SinAuto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7duwa")
 }, {
 "duration": 1.0,
@@ -552,6 +730,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qbs7"]
+size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbpny"]
 atlas = ExtResource("9_pot7g")
@@ -721,6 +902,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sselb"]
+size = Vector2(31, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6xhl"]
+size = Vector2(31, 52)
+
 [node name="nivel_2" type="Node2D" unique_id=1691302480]
 script = ExtResource("1_kkyht")
 metadata/_custom_type_script = "uid://7abauetwkaxi"
@@ -735,15 +922,22 @@ scale = Vector2(4.532892, 4.532892)
 sprite_frames = SubResource("SpriteFrames_sselb")
 autoplay = "default"
 
+[node name="StaticBody2D" type="StaticBody2D" parent="ChicaQueBaila" unique_id=533446185]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChicaQueBaila/StaticBody2D" unique_id=949113570]
+position = Vector2(1.7974854, -1.7975159)
+scale = Vector2(2.2603316, 2.9804802)
+shape = SubResource("RectangleShape2D_qeet1")
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=227540922]
-tile_map_data = PackedByteArray("AAD2/wgAAQAAAAAAAAD3/wgAAQAAAAAAAAD4/wgAAQAAAAAAAAD5/wgAAQAAAAAAAAD6/wcAAQAAAAAAAAD7/wcAAQAAAAAAAAD8/wcAAQAAAAAAAAD9/wcAAQAAAAAAAAD+/wcAAQAAAAAAAAD//wcAAQAAAAAAAAAAAAcAAQAAAAAAAAADAAgAAQAAAAAAAAAAAAgAAQAAAAAAAAD//wgAAQAAAAAAAAD+/wgAAQAAAAAAAAD9/wgAAQAAAAAAAAD8/wgAAQAAAAAAAAD7/wgAAQAAAAAAAAD6/wgAAQAAAAAAAAD5/wcAAQAAAAAAAAD4/wcAAQAAAAAAAAD3/wcAAQAAAAAAAAD2/wcAAQAAAAAAAAD5/wYAAQAAAAAAAAD6/wYAAQAAAAAAAAD7/wYAAQAAAAAAAAD8/wYAAQAAAAAAAAD9/wYAAQAAAAAAAAADAAcAAQAAAAAAAAD3/wYAAQAAAAAAAAD2/wYAAQAAAAAAAAD4/wYAAQAAAAAAAAD+/wYAAQAAAAAAAAD//wYAAQAAAAAAAAAAAAYAAQAAAAAAAAADAAYAAQAAAAAAAAAEAAYAAQAAAAAAAAAEAAcAAQAAAAAAAAAEAAgAAQAAAAAAAAD1/wYAAQAAAAAAAAD1/wcAAQAAAAAAAAD1/wkAAQACAAAAAAD2/wkAAQACAAAAAAD3/wkAAQACAAAAAAD4/wkAAQACAAAAAAD5/wkAAQACAAAAAAD6/wkAAQACAAAAAAD7/wkAAQACAAAAAAD8/wkAAQACAAAAAAD9/wkAAQACAAAAAAD+/wkAAQACAAAAAAD//wkAAQACAAAAAAAAAAkAAQACAAAAAAABAAkAAQACAAAAAAACAAkAAQACAAAAAAADAAkAAQACAAAAAAAEAAkAAQACAAAAAAD1/woAAQACAAAAAAD2/woAAQACAAAAAAD3/woAAQACAAAAAAD4/woAAQACAAAAAAD5/woAAQACAAAAAAD6/woAAQACAAAAAAD7/woAAQACAAAAAAD8/woAAQACAAAAAAD9/woAAQACAAAAAAD+/woAAQACAAAAAAD//woAAQACAAAAAAD//wsAAQACAAAAAAAAAAsAAQACAAAAAAAAAAoAAQACAAAAAAABAAoAAQACAAAAAAACAAoAAQACAAAAAAADAAoAAQACAAAAAAAEAAoAAQACAAAAAAAEAAsAAQACAAAAAAADAAsAAQACAAAAAAABAAsAAQACAAAAAAD+/wsAAQACAAAAAAD9/wsAAQACAAAAAAD4/wsAAQACAAAAAAD3/wsAAQACAAAAAAD2/wsAAQACAAAAAAD1/wsAAQACAAAAAAACAAsAAQACAAAAAAD7/wsAAQACAAAAAAD8/wsAAQACAAAAAAD6/wsAAQACAAAAAAD5/wsAAQACAAAAAAAEAA4AAQACAAAAAAAEAA0AAQACAAAAAAAEAAwAAQACAAAAAAADAA4AAQACAAAAAAADAA0AAQACAAAAAAADAAwAAQACAAAAAAACAA4AAQACAAAAAAACAA0AAQACAAAAAAACAAwAAQACAAAAAAABAA4AAQACAAAAAAABAA0AAQACAAAAAAABAAwAAQACAAAAAAAAAA4AAQACAAAAAAAAAA0AAQACAAAAAAAAAAwAAQACAAAAAAD//w4AAQACAAAAAAD//w0AAQACAAAAAAD//wwAAQACAAAAAAD+/w4AAQACAAAAAAD+/w0AAQACAAAAAAD+/wwAAQACAAAAAAD9/w4AAQACAAAAAAD9/w0AAQACAAAAAAD9/wwAAQACAAAAAAD8/w4AAQACAAAAAAD8/w0AAQACAAAAAAD8/wwAAQACAAAAAAD7/w4AAQACAAAAAAD7/w0AAQACAAAAAAD7/wwAAQACAAAAAAD6/w4AAQACAAAAAAD6/w0AAQACAAAAAAD6/wwAAQACAAAAAAD5/w4AAQACAAAAAAD5/w0AAQACAAAAAAD5/wwAAQACAAAAAAD4/w4AAQACAAAAAAD4/w0AAQACAAAAAAD4/wwAAQACAAAAAAD3/w4AAQACAAAAAAD3/w0AAQACAAAAAAD3/wwAAQACAAAAAAD2/w4AAQACAAAAAAD2/w0AAQACAAAAAAD2/wwAAQACAAAAAAD1/w4AAQACAAAAAAD1/w0AAQACAAAAAAD1/wwAAQACAAAAAAD0/woAAQAAAAAAAAD0/wkAAQAAAAAAAAD0/wgAAQAAAAAAAAD0/wcAAQAAAAAAAAD0/wYAAQAAAAAAAAD0/w4AAQAAAAAAAAD0/w0AAQAAAAAAAAD0/wwAAQAAAAAAAAD0/wsAAQAAAAAAAAAFAA8AAQAAAAAAAAAEAA8AAQACAAAAAAADAA8AAQACAAAAAAACAA8AAQACAAAAAAABAA8AAQACAAAAAAAAAA8AAQACAAAAAAD//w8AAQACAAAAAAD+/w8AAQACAAAAAAD9/w8AAQACAAAAAAD8/w8AAQACAAAAAAD7/w8AAQACAAAAAAD6/w8AAQACAAAAAAD5/w8AAQACAAAAAAD4/w8AAQACAAAAAAD3/w8AAQACAAAAAAD2/w8AAQACAAAAAAD1/w8AAQACAAAAAAD0/w8AAQAAAAAAAAAFAA4AAQAAAAAAAAAFAA0AAQAAAAAAAAAFAAwAAQAAAAAAAAAFAAsAAQAAAAAAAAAFAAoAAQAAAAAAAAAFAAkAAQAAAAAAAAAFAAgAAQAAAAAAAAAFAAcAAQAAAAAAAAAFAAYAAQAAAAAAAAD1/wgAAQAAAAAAAAAFABAAAQAAAAEAAAAEABAAAQAAAAEAAAADABAAAQAAAAEAAAACABAAAQAAAAEAAAABABAAAQAAAAEAAAAAABAAAQAAAAEAAAD//xAAAQAAAAEAAAD+/xAAAQAAAAEAAAD9/xAAAQAAAAEAAAD8/xAAAQAAAAEAAAD7/xAAAQAAAAEAAAD6/xAAAQAAAAEAAAD5/xAAAQAAAAEAAAD0/xAAAQAAAAEAAAD1/xAAAQAAAAEAAAD2/xAAAQAAAAEAAAD3/xAAAQAAAAEAAAD4/xAAAQAAAAEAAAACAAYAAQAAAAAAAAABAAYAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD2/wgAAQAAAAAAAAD3/wgAAQAAAAAAAAD4/wgAAQAAAAAAAAD7/wcAAQAAAAAAAAD8/wcAAQAAAAAAAAD9/wcAAQAAAAAAAAD+/wcAAQAAAAAAAAD//wcAAQAAAAAAAAAAAAcAAQAAAAAAAAADAAgAAQAAAAAAAAAAAAgAAQAAAAAAAAD//wgAAQAAAAAAAAD+/wgAAQAAAAAAAAD9/wgAAQAAAAAAAAD8/wgAAQAAAAAAAAD7/wgAAQAAAAAAAAD4/wcAAQAAAAAAAAD3/wcAAQAAAAAAAAD2/wcAAQAAAAAAAAD5/wYAAQAAAAAAAAD6/wYAAQAAAAAAAAD7/wYAAQAAAAAAAAD8/wYAAQAAAAAAAAD9/wYAAQAAAAAAAAADAAcAAQAAAAAAAAD3/wYAAQAAAAAAAAD2/wYAAQAAAAAAAAD4/wYAAQAAAAAAAAD+/wYAAQAAAAAAAAD//wYAAQAAAAAAAAAAAAYAAQAAAAAAAAADAAYAAQAAAAAAAAAEAAYAAQAAAAAAAAAEAAcAAQAAAAAAAAAEAAgAAQAAAAAAAAD1/wYAAQAAAAAAAAD1/wcAAQAAAAAAAAD1/wkAAQACAAAAAAD2/wkAAQACAAAAAAD3/wkAAQACAAAAAAD4/wkAAQACAAAAAAD5/wkAAQACAAAAAAD6/wkAAQACAAAAAAD7/wkAAQACAAAAAAD8/wkAAQACAAAAAAD9/wkAAQACAAAAAAD+/wkAAQACAAAAAAD//wkAAQACAAAAAAAAAAkAAQACAAAAAAABAAkAAQACAAAAAAACAAkAAQACAAAAAAADAAkAAQACAAAAAAAEAAkAAQACAAAAAAD1/woAAQACAAAAAAD2/woAAQACAAAAAAD3/woAAQACAAAAAAD4/woAAQACAAAAAAD5/woAAQACAAAAAAD6/woAAQACAAAAAAD7/woAAQACAAAAAAD8/woAAQACAAAAAAD9/woAAQACAAAAAAD+/woAAQACAAAAAAD//woAAQACAAAAAAD//wsAAQACAAAAAAAAAAsAAQACAAAAAAAAAAoAAQACAAAAAAABAAoAAQACAAAAAAACAAoAAQACAAAAAAADAAoAAQACAAAAAAAEAAoAAQACAAAAAAAEAAsAAQACAAAAAAADAAsAAQACAAAAAAABAAsAAQACAAAAAAD+/wsAAQACAAAAAAD9/wsAAQACAAAAAAD4/wsAAQACAAAAAAD3/wsAAQACAAAAAAD2/wsAAQACAAAAAAD1/wsAAQACAAAAAAACAAsAAQACAAAAAAD7/wsAAQACAAAAAAD8/wsAAQACAAAAAAD6/wsAAQACAAAAAAD5/wsAAQACAAAAAAAEAA4AAQACAAAAAAAEAA0AAQACAAAAAAAEAAwAAQACAAAAAAADAA4AAQACAAAAAAADAA0AAQACAAAAAAADAAwAAQACAAAAAAACAA4AAQACAAAAAAACAA0AAQACAAAAAAACAAwAAQACAAAAAAABAA4AAQACAAAAAAABAA0AAQACAAAAAAABAAwAAQACAAAAAAAAAA4AAQACAAAAAAAAAA0AAQACAAAAAAAAAAwAAQACAAAAAAD//w4AAQACAAAAAAD//w0AAQACAAAAAAD//wwAAQACAAAAAAD+/w4AAQACAAAAAAD+/w0AAQACAAAAAAD+/wwAAQACAAAAAAD9/w4AAQACAAAAAAD9/w0AAQACAAAAAAD9/wwAAQACAAAAAAD8/w4AAQACAAAAAAD8/w0AAQACAAAAAAD8/wwAAQACAAAAAAD7/w4AAQACAAAAAAD7/w0AAQACAAAAAAD7/wwAAQACAAAAAAD6/w4AAQACAAAAAAD6/w0AAQACAAAAAAD6/wwAAQACAAAAAAD5/w4AAQACAAAAAAD5/w0AAQACAAAAAAD5/wwAAQACAAAAAAD4/w4AAQACAAAAAAD4/w0AAQACAAAAAAD4/wwAAQACAAAAAAD3/w4AAQACAAAAAAD3/w0AAQACAAAAAAD3/wwAAQACAAAAAAD2/w4AAQACAAAAAAD2/w0AAQACAAAAAAD2/wwAAQACAAAAAAD1/w4AAQACAAAAAAD1/w0AAQACAAAAAAD1/wwAAQACAAAAAAD0/woAAQAAAAAAAAD0/wkAAQAAAAAAAAD0/wgAAQAAAAAAAAD0/wcAAQAAAAAAAAD0/wYAAQAAAAAAAAD0/w4AAQAAAAAAAAD0/w0AAQAAAAAAAAD0/wwAAQAAAAAAAAD0/wsAAQAAAAAAAAAFAA8AAQAAAAAAAAAEAA8AAQACAAAAAAADAA8AAQACAAAAAAACAA8AAQACAAAAAAABAA8AAQACAAAAAAAAAA8AAQACAAAAAAD//w8AAQACAAAAAAD+/w8AAQACAAAAAAD9/w8AAQACAAAAAAD8/w8AAQACAAAAAAD7/w8AAQACAAAAAAD6/w8AAQACAAAAAAD5/w8AAQACAAAAAAD4/w8AAQACAAAAAAD3/w8AAQACAAAAAAD2/w8AAQACAAAAAAD1/w8AAQACAAAAAAD0/w8AAQAAAAAAAAAFAA4AAQAAAAAAAAAFAA0AAQAAAAAAAAAFAAwAAQAAAAAAAAAFAAsAAQAAAAAAAAAFAAoAAQAAAAAAAAAFAAkAAQAAAAAAAAAFAAgAAQAAAAAAAAAFAAcAAQAAAAAAAAAFAAYAAQAAAAAAAAD1/wgAAQAAAAAAAAAFABAAAQAAAAEAAAAEABAAAQAAAAEAAAADABAAAQAAAAEAAAACABAAAQAAAAEAAAABABAAAQAAAAEAAAAAABAAAQAAAAEAAAD//xAAAQAAAAEAAAD+/xAAAQAAAAEAAAD9/xAAAQAAAAEAAAD8/xAAAQAAAAEAAAD7/xAAAQAAAAEAAAD6/xAAAQAAAAEAAAD5/xAAAQAAAAEAAAD0/xAAAQAAAAEAAAD1/xAAAQAAAAEAAAD2/xAAAQAAAAEAAAD3/xAAAQAAAAEAAAD4/xAAAQAAAAEAAAACAAYAAQAAAAAAAAABAAYAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_8hre3")
 
 [node name="Player" parent="." unique_id=1915309905 instance=ExtResource("1_804co")]
 z_index = 1
 position = Vector2(26, 146)
 active = false
-direction = Vector2(0, -1)
+direction = Vector2(-1, 0)
 
 [node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("2_hxfkh")]
 top_level = true
@@ -772,22 +966,38 @@ libraries/ = SubResource("AnimationLibrary_amwks")
 
 [node name="Tocadiscos" parent="." unique_id=66310711 instance=ExtResource("2_amwks")]
 position = Vector2(-127, 141)
+scale = Vector2(0.47141957, 0.47141957)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tocadiscos" unique_id=498582564]
+scale = Vector2(1.7729608, 1.7729608)
 sprite_frames = SubResource("SpriteFrames_sqjfd")
 autoplay = "default"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tocadiscos" unique_id=1370219669]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tocadiscos/StaticBody2D" unique_id=1089901218]
+position = Vector2(1.7974854, -1.7975159)
+scale = Vector2(2.2603316, 2.9804802)
+shape = SubResource("RectangleShape2D_qeet1")
 
 [node name="CortinaYCuadro" parent="." unique_id=1917869702 instance=ExtResource("2_amwks")]
 position = Vector2(24, 128)
 
+[node name="Auto" type="AnimatedSprite2D" parent="CortinaYCuadro" unique_id=296446016]
+visible = false
+position = Vector2(7, 108.99999)
+scale = Vector2(0.636, 0.636)
+sprite_frames = SubResource("SpriteFrames_4s7qx")
+autoplay = "default"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CortinaYCuadro" unique_id=391253948]
-sprite_frames = SubResource("SpriteFrames_psj36")
+sprite_frames = ExtResource("9_qeet1")
 animation = &"closed"
 autoplay = "closed"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CortinaYCuadro" unique_id=1710830458]
 position = Vector2(16, 0)
-sprite_frames = SubResource("SpriteFrames_psj36")
+sprite_frames = ExtResource("9_qeet1")
 animation = &"closed"
 autoplay = "closed"
 flip_h = true
@@ -797,32 +1007,83 @@ z_index = -1
 position = Vector2(8, 1.1920929e-07)
 scale = Vector2(0.47019202, 0.49522388)
 sprite_frames = SubResource("SpriteFrames_pkfl3")
+animation = &"SinAuto"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CortinaYCuadro" unique_id=1173490579]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CortinaYCuadro/StaticBody2D" unique_id=1543095237]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_3qbs7")
 
 [node name="Pishito" parent="." unique_id=1471082289 instance=ExtResource("2_amwks")]
 position = Vector2(-214, 196)
 scale = Vector2(0.24400653, 0.24400653)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pishito" unique_id=882398897]
+position = Vector2(-28.687756, 12.294752)
 scale = Vector2(3.5986772, 3.5986772)
 sprite_frames = SubResource("SpriteFrames_i8me1")
 animation = &"Run"
 autoplay = "Idle"
 flip_h = true
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Pishito" unique_id=1700808116]
+position = Vector2(-4.0982513, 4.0982513)
+scale = Vector2(1.4801208, 1.1039339)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pishito/StaticBody2D" unique_id=1909408540]
+position = Vector2(1.7974854, -1.7975159)
+scale = Vector2(2.2603316, 2.9804802)
+shape = SubResource("RectangleShape2D_qeet1")
+
 [node name="AutoRoto" parent="." unique_id=535368607 instance=ExtResource("2_amwks")]
 visible = false
-position = Vector2(31, 221)
+position = Vector2(31, 235)
 scale = Vector2(0.6361525, 0.6361525)
+
+[node name="Sprite2D" type="Sprite2D" parent="AutoRoto" unique_id=882109155]
+texture = ExtResource("11_mgy73")
+
+[node name="Chapa" type="Sprite2D" parent="AutoRoto" unique_id=2034193025]
+position = Vector2(-26.72315, -14.147551)
+texture = ExtResource("14_qeet1")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1578813957]
 z_index = -2
-offset_left = -195.0
-offset_top = 90.0
-offset_right = -155.0
-offset_bottom = 130.0
+offset_left = -193.0
+offset_top = 96.00001
+offset_right = -153.0
+offset_bottom = 136.0
 scale = Vector2(7.4279175, 4.7164373)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Puerta" type="Node2D" parent="." unique_id=1912895008]
+position = Vector2(-104, 128)
+
+[node name="Puerta1" type="AnimatedSprite2D" parent="Puerta" unique_id=1806387877]
+sprite_frames = ExtResource("9_qeet1")
+animation = &"closed"
+
+[node name="Puerta2" type="AnimatedSprite2D" parent="Puerta" unique_id=691054780]
+position = Vector2(16, 0)
+sprite_frames = ExtResource("9_qeet1")
+animation = &"closed"
+flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Puerta" unique_id=2013412014]
+position = Vector2(4, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puerta/StaticBody2D" unique_id=81758446]
+position = Vector2(4.5, -6)
+shape = SubResource("RectangleShape2D_sselb")
+
+[node name="Salida" type="Area2D" parent="Puerta" unique_id=1668041132]
+position = Vector2(87, -112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puerta/Salida" unique_id=1358078098]
+position = Vector2(-78.5, 87)
+shape = SubResource("RectangleShape2D_k6xhl")
 
 [connection signal="interact" from="ChicaQueBaila" to="." method="_on_chica_que_baila_interact"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
@@ -832,3 +1093,4 @@ color = Color(0, 0, 0, 1)
 [connection signal="animation_finished" from="CortinaYCuadro/PinturaAuto" to="." method="_on_pintura_auto_animation_finished"]
 [connection signal="interact" from="Pishito" to="." method="_on_pishito_interact"]
 [connection signal="interact" from="AutoRoto" to="." method="_on_auto_roto_interact"]
+[connection signal="body_entered" from="Puerta/Salida" to="." method="_on_salida_body_entered"]
