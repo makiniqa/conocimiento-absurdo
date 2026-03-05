@@ -7,13 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://bmkil8moafb8q" path="res://Scenes/animated_gate.tscn" id="5_hwnlj"]
 [ext_resource type="PackedScene" uid="uid://2fpcu6o3qcp0" path="res://Scenes/player.tscn" id="5_jmhww"]
 [ext_resource type="PackedScene" uid="uid://caxpriv3c766y" path="res://Scenes/dialogue_box.tscn" id="6_jmhww"]
-[ext_resource type="Texture2D" uid="uid://efqlkf0cx6dv" path="res://Objects/hojita.png" id="7_kyajb"]
+[ext_resource type="Texture2D" uid="uid://dxl53nkn778o4" path="res://Characters/orcnella.png" id="7_kyajb"]
 [ext_resource type="Texture2D" uid="uid://d2e005av4uugj" path="res://Characters/libreria.png" id="8_ql53f"]
+[ext_resource type="Texture2D" uid="uid://efqlkf0cx6dv" path="res://Objects/hojita.png" id="8_rjvxo"]
 [ext_resource type="Texture2D" uid="uid://ci8h3vorw0mmh" path="res://Objects/vuvucela.png" id="9_p3mfg"]
-[ext_resource type="Texture2D" uid="uid://cpsd82px4s5yy" path="res://Objects/Egg item.png" id="9_xvap8"]
 [ext_resource type="Texture2D" uid="uid://b6h8oie1uppwf" path="res://Objects/manzana.png" id="10_gh6o0"]
 [ext_resource type="Texture2D" uid="uid://vign6g821b60" path="res://Characters/kiosko.png" id="10_rjvxo"]
 [ext_resource type="Texture2D" uid="uid://b1x2fdu6cvvcb" path="res://Objects/moneda.png" id="11_t31ra"]
+[ext_resource type="Texture2D" uid="uid://byvhayeoncn4s" path="res://Characters/doggo-Sheet.png" id="13_p3mfg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_820xk"]
 texture = ExtResource("1_3givb")
@@ -571,6 +572,103 @@ size = Vector2(43, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjvxo"]
 size = Vector2(62.341957, 15.917095)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj0hd"]
+atlas = ExtResource("13_p3mfg")
+region = Rect2(304, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5pjp"]
+atlas = ExtResource("13_p3mfg")
+region = Rect2(288, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpq0c"]
+atlas = ExtResource("13_p3mfg")
+region = Rect2(272, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xy45"]
+atlas = ExtResource("13_p3mfg")
+region = Rect2(256, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gh6o0"]
+atlas = ExtResource("13_p3mfg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t31ra"]
+atlas = ExtResource("13_p3mfg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eaxed"]
+atlas = ExtResource("13_p3mfg")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3g0m"]
+atlas = ExtResource("13_p3mfg")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3digf"]
+atlas = ExtResource("13_p3mfg")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5wsa"]
+atlas = ExtResource("13_p3mfg")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guoqe"]
+atlas = ExtResource("13_p3mfg")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iadn"]
+atlas = ExtResource("13_p3mfg")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u5rtf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj0hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5pjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpq0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xy45")
+}],
+"loop": false,
+"name": &"Bark",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gh6o0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t31ra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eaxed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3g0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3digf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5wsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guoqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iadn")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61jm7"]
 size = Vector2(62.83637, 16.290897)
 
@@ -727,6 +825,7 @@ position = Vector2(-46, 72)
 active = false
 
 [node name="Orcnella" parent="." unique_id=163036046 instance=ExtResource("4_22i05")]
+visible = false
 position = Vector2(-46, 8)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Orcnella" unique_id=404308167]
@@ -736,15 +835,19 @@ position = Vector2(9, 15)
 position = Vector2(-9, -2)
 shape = SubResource("RectangleShape2D_xvap8")
 
+[node name="Sprite2D" type="Sprite2D" parent="Orcnella" unique_id=1659899976]
+texture = ExtResource("7_kyajb")
+
 [node name="hojita" parent="." unique_id=384207566 instance=ExtResource("4_22i05")]
 position = Vector2(-241, 153)
 scale = Vector2(0.35551965, 0.35551965)
-texture = ExtResource("7_kyajb")
+
+[node name="Sprite2D" type="Sprite2D" parent="hojita" unique_id=392919827]
+texture = ExtResource("8_rjvxo")
 
 [node name="libreria" parent="." unique_id=1407127689 instance=ExtResource("4_22i05")]
 position = Vector2(-184.125, -94)
 scale = Vector2(0.7539064, 0.7539064)
-texture = ExtResource("8_ql53f")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="libreria" unique_id=401404206]
 
@@ -753,26 +856,38 @@ position = Vector2(0.82901, 9.284958)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_rjvxo")
 
+[node name="Sprite2D" type="Sprite2D" parent="libreria" unique_id=65018689]
+texture = ExtResource("8_ql53f")
+
 [node name="Vuvuzela" parent="." unique_id=458951742 instance=ExtResource("4_22i05")]
 position = Vector2(-221, -16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Vuvuzela" unique_id=1449410492]
 texture = ExtResource("9_p3mfg")
 
 [node name="Manzana" parent="." unique_id=353815338 instance=ExtResource("4_22i05")]
 position = Vector2(-15, 145)
+
+[node name="Sprite2D" type="Sprite2D" parent="Manzana" unique_id=2094928246]
 texture = ExtResource("10_gh6o0")
 
 [node name="Moneda" parent="." unique_id=1417835234 instance=ExtResource("4_22i05")]
 position = Vector2(43, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Moneda" unique_id=1836526959]
 texture = ExtResource("11_t31ra")
 
 [node name="Gatito" parent="." unique_id=1661824083 instance=ExtResource("4_22i05")]
 position = Vector2(-155, 87)
-texture = ExtResource("9_xvap8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gatito" unique_id=1764763242]
+sprite_frames = SubResource("SpriteFrames_u5rtf")
+animation = &"Bark"
+autoplay = "Idle"
 
 [node name="Kiosko" parent="." unique_id=810447935 instance=ExtResource("4_22i05")]
 position = Vector2(-40.000004, -98.00001)
 scale = Vector2(0.859375, 0.859375)
-texture = ExtResource("10_rjvxo")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Kiosko" unique_id=498371615]
 
@@ -780,6 +895,9 @@ texture = ExtResource("10_rjvxo")
 position = Vector2(7.6293945e-06, 10.472733)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_61jm7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Kiosko" unique_id=1971559644]
+texture = ExtResource("10_rjvxo")
 
 [node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("6_jmhww")]
 top_level = true

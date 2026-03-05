@@ -1,6 +1,11 @@
 extends Level
 
+var pibe := Character.new("Pibe")
+var dios := Character.new("Dios", "god", DialogueBox.default_talking_speed*0.5)
+
+
 func _ready():
+	Character.dialogueBox = $DialogueBox
 	$Player/Camera2D.enabled = false
 	$AnimationPlayer.play("enter_level")
 	
@@ -39,14 +44,10 @@ func _on_cortina_y_cuadro_interact() -> void:
 	$AnimationPlayer.play("preatropellao")
 	$DialogueBox.queue_display_text("che hay algo acá", DialogueBox.default_talking_speed, "ah")
 	# acá se abre la cortina y aparece un cuadro
-	$DialogueBox.queue_display_text("<<acá se abre la cortina y aparece un cuadro>>", DialogueBox.default_talking_speed*2, "silence")
-	$DialogueBox.queue_display_text("omg un cuadro", DialogueBox.default_talking_speed, "ah")
-	# el auto acelera
-	$DialogueBox.queue_display_text("<<el auto acelera>>", DialogueBox.default_talking_speed*2, "silence")
-	$DialogueBox.queue_display_text("AAAAAAAAAAAA", DialogueBox.default_talking_speed*2, "ah")
-	$DialogueBox.set_callable_on_queue_end(
-		func (): $AnimationPlayer.play("atropellao")
-		)
+	$CortinaYCuadro/AnimatedSprite2D.play("open")
+	$CortinaYCuadro/AnimatedSprite2D2.play("open")
+	#$DialogueBox.queue_display_text("<<acá se abre la cortina y aparece un cuadro>>", DialogueBox.default_talking_speed*2, "silence")
+
 
 func _on_pishito_interact() -> void:
 	$DialogueBox.queue_display_text("PISHITO 😍", DialogueBox.default_talking_speed, "ah")
@@ -55,3 +56,14 @@ func _on_pishito_interact() -> void:
 func _on_auto_roto_interact() -> void:
 	$DialogueBox.queue_display_text(":O se salió el cosito este de la rueda", DialogueBox.default_talking_speed, "ah")
 	$DialogueBox.queue_display_text("creo que este pishito quiere que se lo tire!", DialogueBox.default_talking_speed, "ah")
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$DialogueBox.queue_display_text("omg un cuadro", DialogueBox.default_talking_speed, "ah")
+	$DialogueBox.set_callable_on_queue_end(
+		func (): $CortinaYCuadro/PinturaAuto.play("default")
+		)
+
+func _on_pintura_auto_animation_finished() -> void:
+	$DialogueBox.queue_display_text("AAAAAAAAAAAA", DialogueBox.default_talking_speed*2, "ah")
+	$AnimationPlayer.play("atropellao")

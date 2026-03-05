@@ -1,15 +1,13 @@
 [gd_scene format=3 uid="uid://73qbrux4q6n3"]
 
-[ext_resource type="Texture2D" uid="uid://dxl53nkn778o4" path="res://Characters/orcnella.png" id="1_8o05l"]
 [ext_resource type="Script" uid="uid://dw0qq754ivl42" path="res://Scripts/interactuable.gd" id="2_choh8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8o05l"]
 radius = 37.12142
 
-[node name="Interactuable" type="Sprite2D" unique_id=163036046]
+[node name="Interactuable" type="Node2D" unique_id=1760899679]
 z_as_relative = false
 y_sort_enabled = true
-texture = ExtResource("1_8o05l")
 script = ExtResource("2_choh8")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=999132841]
@@ -20,4 +18,3 @@ shape = SubResource("CircleShape2D_8o05l")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

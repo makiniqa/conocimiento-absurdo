@@ -1,5 +1,5 @@
 class_name Interactuable
-extends Sprite2D
+extends Node2D
 
 var isInside := false
 

@@ -7,25 +7,10 @@ var personita_tiene_hojita := false
 var personita_tiene_marcadores := false
 var puerta_desbloqueada := false
 
-class Character:
-	static var dialogueBox
-	var name: String = ""
-	var voice: String = "default"
-	var speed: float = 0.0
-	
-	func _init(name, voice = "default", speed := DialogueBox.default_talking_speed):
-		self.name = name
-		self.voice = voice
-		self.speed = speed
-	
-	func say(text: String, dialogueID: String = ""):
-		dialogueBox.queue_display_text(text, DialogueBox.default_talking_speed, self.voice, dialogueID)
-		
-		
 var pibe := Character.new("Pibe")
 var orcnella := Character.new("Orcnella", "ah")
 var librero := Character.new("Librero", "honk")
-var dios := Character.new("Librero", "god", DialogueBox.default_talking_speed*0.5)
+var dios := Character.new("Dios", "god", DialogueBox.default_talking_speed*0.5)
 
 func _ready():
 	Character.dialogueBox = $DialogueBox
@@ -153,8 +138,12 @@ func _on_moneda_interact() -> void:
 
 func _on_gatito_interact() -> void:
 	$Player.active = false
+	$Gatito/AnimatedSprite2D.play("Bark")
 	$DialogueBox.queue_display_text("miaaaauuuuuu", DialogueBox.default_talking_speed, "honk")
 	$DialogueBox.queue_display_text("digo guau", DialogueBox.default_talking_speed, "honk")
+	$DialogueBox.set_callable_on_queue_end(
+		func () : $Gatito/AnimatedSprite2D.play("Idle")
+	)
 
 
 func _on_kiosko_interact() -> void:
