@@ -825,7 +825,6 @@ position = Vector2(-46, 72)
 active = false
 
 [node name="Orcnella" parent="." unique_id=163036046 instance=ExtResource("4_22i05")]
-visible = false
 position = Vector2(-46, 8)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Orcnella" unique_id=404308167]
