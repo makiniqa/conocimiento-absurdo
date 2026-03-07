@@ -12,23 +12,31 @@ var voices = {
 
 const default_talking_speed := 15.0
 
-class DialogueComponent:
+class DialogueEvent:
+	enum EventType {
+		DIALOGUE_BEGIN,
+		DIALOGUE_END,
+		DIALOGUE_SPEECH,
+		DIALOGUE_CALLABLE
+	};
+	var type: EventType
 	var text: String = ""
 	var speed: float = 0.0 # in characters per second
 	var voice: String = "default"
 	var dialogueID: String = "none"
 	
-	func _init(text: String, speed: float, voice: String = "default", dialogueID: String = "none"):
+	func _init(type: EventType, text: String, speed: float, voice: String = "default", dialogueID: String = "none"):
 		self.text = text
 		self.speed = speed
 		self.voice = voice
 		self.dialogueID = dialogueID
+		self.type = type
 
 var waitTime: float = 1.5
 var t0: float = 0
 var t1: float = 0
 var displayTime: float = 0
-var displayTextQueue: Array[DialogueComponent] = []
+var displayTextQueue: Array[DialogueEvent] = []
 var displayText: String = ""
 var currentText: String = ""
 var currentDialogueID: String = ""
@@ -45,58 +53,83 @@ func set_callable_on_queue_end(fun: Callable):
 
 func _ready():
 	$CanvasLayer.visible = false
-	
+
+
+func begin_dialogue(dialogueID: String) -> bool:
+	if (currentDialogueID == dialogueID):
+		return false
+	var event = DialogueEvent.new(DialogueEvent.EventType.DIALOGUE_BEGIN, "", 0.0, "", dialogueID)
+	if event not in displayTextQueue:
+		displayTextQueue.append(event)
+	return true
+
+func end_dialogue():
+	var event = DialogueEvent.new(DialogueEvent.EventType.DIALOGUE_END, "", 0.0, "", currentDialogueID)
+	if event not in displayTextQueue:
+		displayTextQueue.append(event)
+
 func queue_display_text(text:String, speed: float, voice: String = "default", dialogueID: String = "none", allow_repeat: bool = false, cancel_all_before: bool = false):
-	var dialogueComponent = DialogueComponent.new(text,speed,voice,dialogueID)
-	if allow_repeat or true: # TODO resolver este cosocroto
-		if cancel_all_before:
-			shouldDisplay = false
-			displayTextQueue.clear()
-		displayTextQueue.append(dialogueComponent)
+	var event = DialogueEvent.new(DialogueEvent.EventType.DIALOGUE_SPEECH, text,speed,voice,dialogueID)
+	if cancel_all_before:
+		shouldDisplay = false
+		displayTextQueue.clear()
+	displayTextQueue.append(event)
+
+func dequeue_event():
+	var next = displayTextQueue.pop_front()
+	if next == null:
+		return
+	match next.type:
+		DialogueEvent.EventType.DIALOGUE_END:
+			currentDialogueID = ""
+		DialogueEvent.EventType.DIALOGUE_BEGIN:
+			currentDialogueID = next.dialogueID
+		DialogueEvent.EventType.DIALOGUE_CALLABLE:
+			pass
+		DialogueEvent.EventType.DIALOGUE_SPEECH:
+			var text = next.text
+			var speed = next.speed
+			var voice = next.voice
+			if not text.is_empty() and speed > 0.0:
+				shouldDisplay = true
+				displayTime = text.length() / speed + waitTime
+				displayText = text
+				currentText = ""
+				textIndex = 0
+				charsPerSecond = speed
+				t0 = Time.get_ticks_msec()*1.0e-3
+				$CanvasLayer.visible = true
+				$CanvasLayer/Label.text = currentText
+				if voice in voices.keys():
+					$AudioStreamPlayer.stream = voices[voice]
+				else:
+					$AudioStreamPlayer.stream = voices["default"]
+
+func show_textBox():
+	t1 = Time.get_ticks_msec()*1.0e-3
+	var delta = t1-t0
+	var pressed_cancel = Input.is_action_just_pressed("cancel")
+	if pressed_cancel:
+		textIndex = displayText.length()
+		delta = displayTime+0.1
+	elif delta >= textIndex/charsPerSecond and currentText != displayText:
+		textIndex += 1
+		currentText = displayText.substr(0,textIndex)
+		$CanvasLayer/Label.text = currentText
+		if $AudioStreamPlayer.stream:
+			$AudioStreamPlayer.play()
+	if (delta > displayTime):
+		shouldDisplay = false
+		displayText = ""
+		$CanvasLayer.visible = false
+
 
 func _process(_delta: float) -> void:
 	if not shouldDisplay:
-		var next = displayTextQueue.pop_front()
-		if next == null:
-			return
-		var text = next.text
-		var speed = next.speed
-		var voice = next.voice
-		if not text.is_empty() and speed > 0.0:
-			shouldDisplay = true
-			displayTime = text.length() / speed + waitTime
-			displayText = text
-			currentText = ""
-			currentDialogueID = next.dialogueID
-			textIndex = 0
-			charsPerSecond = speed
-			t0 = Time.get_ticks_msec()*1.0e-3
-			$CanvasLayer.visible = true
-			$CanvasLayer/Label.text = currentText
-			if voice in voices.keys():
-				$AudioStreamPlayer.stream = voices[voice]
-			else:
-				$AudioStreamPlayer.stream = voices["default"]
+		dequeue_event()
 	if shouldDisplay:
-		t1 = Time.get_ticks_msec()*1.0e-3
-		var delta = t1-t0
-		var pressed_cancel = Input.is_action_just_pressed("cancel")
-		if pressed_cancel:
-			textIndex = displayText.length()
-			delta = displayTime+0.1
-		elif delta >= textIndex/charsPerSecond and currentText != displayText:
-			textIndex += 1
-			currentText = displayText.substr(0,textIndex)
-			$CanvasLayer/Label.text = currentText
-			if $AudioStreamPlayer.stream:
-				$AudioStreamPlayer.play()
-			#newCharInText.emit()
-		if (delta > displayTime):
-			shouldDisplay = false
-			displayText = ""
-			currentDialogueID = ""
-			$CanvasLayer.visible = false
-			if displayTextQueue.is_empty():
-				endQueue.emit()
-				callableOnQueueEnd.call()
-				callableOnQueueEnd = func (): pass
+		show_textBox()
+	if displayTextQueue.is_empty():
+		endQueue.emit()
+		callableOnQueueEnd.call()
+		callableOnQueueEnd = func (): pass

@@ -7,10 +7,10 @@ var personita_tiene_hojita := false
 var personita_tiene_marcadores := false
 var puerta_desbloqueada := false
 
-var pibe := Character.new("Pibe")
 var orcnella := Character.new("Orcnella", "ah")
 var librero := Character.new("Librero", "honk")
-var dios := Character.new("Dios", "god", DialogueBox.default_talking_speed*0.5)
+var kioskero := Character.new("Kioskero", "honk")
+var perro := Character.new("Pishito", "bark")
 
 func _ready():
 	Character.dialogueBox = $DialogueBox
@@ -19,7 +19,7 @@ func _ready():
 func _on_animated_gate_entered(where: Door) -> void:
 	if not door_entered:
 		door_entered = true
-		pibe.say("*salis por la puerta uwu*")
+		#pibe.say("*salis por la puerta uwu*")
 		$AnimationPlayer.play("fade_out")
 		$Player.active = false
 		
@@ -31,6 +31,8 @@ func _process(_delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "enter_level":
+		if not $DialogueBox.begin_dialogue("enter_level"):
+			return
 		pibe.say("holiii, estoy en busqueda de dios >:)")
 		pibe.say("él mismo me dijo que vive acá pero no sé qué onda")
 		pibe.say("es re raro este lugar...")
@@ -42,12 +44,15 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		dios.say("MARCADOR.")
 		dios.say("...")
 		pibe.say("me pregunto qué significará esto :O")
+		$DialogueBox.end_dialogue()
 
 
 func _on_dialogue_box_end_queue() -> void:
 	$Player.active = true
 
 func _on_interactuable_interact() -> void:
+	if not $DialogueBox.begin_dialogue("orcnella"):
+		return
 	$Player.active = false
 	if not hablaste_con_libreria:
 		orcnella.say("Que haces pibe, tenés un cigarro para convidar?")
@@ -67,7 +72,11 @@ func _on_interactuable_interact() -> void:
 		)
 		puerta_desbloqueada = true
 		$AnimatedGate.active = true
+	$DialogueBox.end_dialogue()
+	
 func _on_hojita_interact() -> void:
+	if not $DialogueBox.begin_dialogue("hojita"):
+		return
 	$Player.active = false
 	if personita_tiene_marcadores:
 		$hojita.queue_free()
@@ -76,8 +85,11 @@ func _on_hojita_interact() -> void:
 	else:
 		pibe.say("hay una hoja en el piso")
 		pibe.say("pero no tenés nada para escribir")
+	$DialogueBox.end_dialogue()
 
 func _on_libreria_interact() -> void:
+	if not $DialogueBox.begin_dialogue("libreria"):
+		return
 	$Player.active = false
 	if puerta_desbloqueada:
 		librero.say("te debo la vida pibe")
@@ -101,9 +113,12 @@ func _on_libreria_interact() -> void:
 		librero.say("yo no fumo pero agarrate estos marcadores y hacele un \"cigarrillo\" a la señora", dialogueID)
 		librero.say("está lo suficientemente pasada de vino como para no darse cuenta", dialogueID)
 		personita_tiene_marcadores = true
+	$DialogueBox.end_dialogue("")
 
 
 func _on_vuvuzela_interact() -> void:
+	if not $DialogueBox.begin_dialogue("vuvuzela"):
+		return
 	$Player.active = false
 	if hablaste_con_orcnella and not puerta_desbloqueada:
 		$Vuvuzela.queue_free()
@@ -112,8 +127,11 @@ func _on_vuvuzela_interact() -> void:
 	else:
 		pibe.say("una vuvuzela", "vuvuzela1")
 		pibe.say("cómo odiás estas vergas", "vuvuzela1")
+	$DialogueBox.end_dialogue()
 
 func _on_manzana_interact() -> void:
+	if not $DialogueBox.begin_dialogue("manzana"):
+		return
 	$Player.active = false
 	if hablaste_con_orcnella and not puerta_desbloqueada:
 		$Manzana.queue_free()
@@ -123,8 +141,11 @@ func _on_manzana_interact() -> void:
 	else:
 		pibe.say("una suculenta manzana")
 		pibe.say("no tenés hambre.")
+	$DialogueBox.end_dialogue()
 
 func _on_moneda_interact() -> void:
+	if not $DialogueBox.begin_dialogue("moneda"):
+		return
 	$Player.active = false
 	if hablaste_con_orcnella and not puerta_desbloqueada:
 		$Moneda.queue_free()
@@ -135,25 +156,32 @@ func _on_moneda_interact() -> void:
 		orcnella.say("ni en los microondas")
 	else:
 		pibe.say("uia, platita")
+	$DialogueBox.end_dialogue()
 
 func _on_gatito_interact() -> void:
+	if not $DialogueBox.begin_dialogue("gatito"):
+		return
 	$Player.active = false
 	$Gatito/AnimatedSprite2D.play("Bark")
-	$DialogueBox.queue_display_text("miaaaauuuuuu", DialogueBox.default_talking_speed, "honk")
-	$DialogueBox.queue_display_text("digo guau", DialogueBox.default_talking_speed, "honk")
+	perro.say("miaaaauuuuuu")
+	perro.say("digo guau")
 	$DialogueBox.set_callable_on_queue_end(
 		func () : $Gatito/AnimatedSprite2D.play("Idle")
 	)
+	$DialogueBox.end_dialogue()
 
 
 func _on_kiosko_interact() -> void:
+	if not $DialogueBox.begin_dialogue("kiosko"):
+		return
 	$Player.active = false
 	if hablaste_con_libreria and not puerta_desbloqueada:
-		$DialogueBox.queue_display_text("capo no tendrás un paquete de cigarrillos?", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("no máster recién se me acabaron", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("pero tengo para cargarte la SUBE", DialogueBox.default_talking_speed, "honk")
+		pibe.say("capo no tendrás un paquete de cigarrillos?")
+		kioskero.say("no máster recién se me acabaron")
+		kioskero.say("pero tengo para cargarte la SUBE")
 	else:
-		$DialogueBox.queue_display_text("hoy hay 5x1 en guaymallén de fruta", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("mm otro día rey", DialogueBox.default_talking_speed, "honk")
-		$DialogueBox.queue_display_text("vos te la perdés", DialogueBox.default_talking_speed, "honk")
+		kioskero.say("hoy hay 5x1 en guaymallén de fruta")
+		pibe.say("mm otro día rey")
+		kioskero.say("vos te la perdés")
+	$DialogueBox.end_dialogue()
 	

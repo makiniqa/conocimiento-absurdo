@@ -1,7 +1,5 @@
 extends Level
 
-var pibe := Character.new("Pibe")
-var dios := Character.new("Dios", "god", DialogueBox.default_talking_speed*0.5)
 var chica := Character.new("Chica", "ah", DialogueBox.default_talking_speed*0.75)
 var perro := Character.new("Pishito", "bark")
 
