@@ -24,13 +24,15 @@ class DialogueEvent:
 	var speed: float = 0.0 # in characters per second
 	var voice: String = "default"
 	var dialogueID: String = "none"
+	var name: String = ""
 	
-	func _init(type: EventType, text: String, speed: float, voice: String = "default", dialogueID: String = "none"):
+	func _init(type: EventType, text: String, speed: float, voice: String = "default", dialogueID: String = "none", name: String = ""):
 		self.text = text
 		self.speed = speed
 		self.voice = voice
 		self.dialogueID = dialogueID
 		self.type = type
+		self.name = name
 
 var waitTime: float = 1.5
 var t0: float = 0
@@ -39,6 +41,7 @@ var displayTime: float = 0
 var displayTextQueue: Array[DialogueEvent] = []
 var displayText: String = ""
 var currentText: String = ""
+var currentName: String = ""
 var currentDialogueID: String = ""
 var textIndex := 0
 var shouldDisplay := false
@@ -54,7 +57,6 @@ func set_callable_on_queue_end(fun: Callable):
 func _ready():
 	$CanvasLayer.visible = false
 
-
 func begin_dialogue(dialogueID: String) -> bool:
 	if (currentDialogueID == dialogueID):
 		return false
@@ -68,8 +70,8 @@ func end_dialogue():
 	if event not in displayTextQueue:
 		displayTextQueue.append(event)
 
-func queue_display_text(text:String, speed: float, voice: String = "default", dialogueID: String = "none", allow_repeat: bool = false, cancel_all_before: bool = false):
-	var event = DialogueEvent.new(DialogueEvent.EventType.DIALOGUE_SPEECH, text,speed,voice,dialogueID)
+func queue_display_text(text:String, speed: float, voice: String = "default", dialogueID: String = "none", allow_repeat: bool = false, cancel_all_before: bool = false, name: String = ""):
+	var event = DialogueEvent.new(DialogueEvent.EventType.DIALOGUE_SPEECH, text,speed,voice,dialogueID, name)
 	if cancel_all_before:
 		shouldDisplay = false
 		displayTextQueue.clear()
@@ -95,11 +97,13 @@ func dequeue_event():
 				displayTime = text.length() / speed + waitTime
 				displayText = text
 				currentText = ""
+				currentName = next.name
 				textIndex = 0
 				charsPerSecond = speed
 				t0 = Time.get_ticks_msec()*1.0e-3
 				$CanvasLayer.visible = true
-				$CanvasLayer/Label.text = currentText
+				$CanvasLayer/TextureRect/Label.text = currentText
+				$CanvasLayer/TextureRect/Name.text = currentName
 				if voice in voices.keys():
 					$AudioStreamPlayer.stream = voices[voice]
 				else:
@@ -115,12 +119,13 @@ func show_textBox():
 	elif delta >= textIndex/charsPerSecond and currentText != displayText:
 		textIndex += 1
 		currentText = displayText.substr(0,textIndex)
-		$CanvasLayer/Label.text = currentText
+		$CanvasLayer/TextureRect/Label.text = currentText
 		if $AudioStreamPlayer.stream:
 			$AudioStreamPlayer.play()
 	if (delta > displayTime):
 		shouldDisplay = false
 		displayText = ""
+		currentName = ""
 		$CanvasLayer.visible = false
 
 

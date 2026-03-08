@@ -1,19 +1,146 @@
 [gd_scene format=4 uid="uid://cstfo6msk7xxx"]
 
-[ext_resource type="Script" uid="uid://7abauetwkaxi" path="res://Scripts/nivel.gd" id="1_rl86n"]
+[ext_resource type="Script" uid="uid://d1tgpm6geb06m" path="res://Scripts/nivel_3.gd" id="1_u67wn"]
 [ext_resource type="PackedScene" uid="uid://caxpriv3c766y" path="res://Scenes/dialogue_box.tscn" id="2_5dm08"]
 [ext_resource type="PackedScene" uid="uid://2fpcu6o3qcp0" path="res://Scenes/player.tscn" id="3_5dm08"]
 [ext_resource type="Texture2D" uid="uid://b5bu28qxakb8d" path="res://Objects/piso-paredes.png" id="4_df6ib"]
 [ext_resource type="Texture2D" uid="uid://lemgeu1wl0t5" path="res://Objects/cartel.png" id="5_6jtdj"]
 [ext_resource type="Texture2D" uid="uid://cc3cphqt5mrpr" path="res://Objects/computadora-Sheet.png" id="6_0tgaq"]
 [ext_resource type="Texture2D" uid="uid://bw7mdvt2nae3b" path="res://Objects/luz-Sheet.png" id="7_u67wn"]
+[ext_resource type="Texture2D" uid="uid://b76r7ngcw4r1n" path="res://Characters/IT.png" id="8_u67wn"]
+
+[sub_resource type="Animation" id="Animation_yvowg"]
+resource_name = "ArreglaPC"
+length = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ITGuy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(25.999998, -36), Vector2(-13.000002, -35)]
+}
 
 [sub_resource type="Animation" id="Animation_0tgaq"]
 resource_name = "Enter"
+length = 1.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-23, 100), Vector2(-23, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_cfnh5"]
+resource_name = "EnterITGuy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ITGuy:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_koyrs"]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u67wn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-23, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ITGuy:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ITGuy:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25.999998, -36)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect2:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u67wn"]
 _data = {
-&"Enter": SubResource("Animation_0tgaq")
+&"ArreglaPC": SubResource("Animation_yvowg"),
+&"Enter": SubResource("Animation_0tgaq"),
+&"EnterITGuy": SubResource("Animation_cfnh5"),
+&"FadeOut": SubResource("Animation_koyrs"),
+&"RESET": SubResource("Animation_u67wn")
 }
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tgaq"]
@@ -105,7 +232,7 @@ animations = [{
 }]
 
 [node name="Level" type="Node2D" unique_id=281420893]
-script = ExtResource("1_rl86n")
+script = ExtResource("1_u67wn")
 metadata/_custom_type_script = "uid://7abauetwkaxi"
 
 [node name="DialogueBox" parent="." unique_id=380382360 instance=ExtResource("2_5dm08")]
@@ -115,10 +242,11 @@ rotation = -0.010615096
 
 [node name="Player" parent="." unique_id=1915309905 instance=ExtResource("3_5dm08")]
 z_index = 1
-position = Vector2(-23, 100)
+position = Vector2(-23, 0)
 active = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1421046219]
+position = Vector2(-23, -17)
 zoom = Vector2(4, 4)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1474740967]
@@ -153,3 +281,21 @@ offset_right = 154.0
 offset_bottom = 131.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="ITGuy" type="Sprite2D" parent="." unique_id=1080005625]
+visible = false
+position = Vector2(25.999998, -36)
+scale = Vector2(1.6875, 1.6875)
+texture = ExtResource("8_u67wn")
+flip_h = true
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1703748604]
+z_index = 1
+offset_left = -236.0
+offset_top = -149.0
+offset_right = 217.0
+offset_bottom = 164.0
+color = Color(0, 0, 0, 0)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

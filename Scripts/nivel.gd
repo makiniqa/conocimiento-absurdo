@@ -14,7 +14,7 @@ class Character:
 	
 	func say(text: String, dialogueID: String = ""):
 		if dialogueBox:
-			dialogueBox.queue_display_text(text, DialogueBox.default_talking_speed, self.voice, dialogueID)
+			dialogueBox.queue_display_text(text, DialogueBox.default_talking_speed, self.voice, dialogueID, false, false, name)
 		
 
 var pibe := Character.new("Pibe")

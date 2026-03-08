@@ -96,6 +96,5 @@ func _on_pintura_auto_animation_finished() -> void:
 
 func _on_salida_body_entered(body: Node2D) -> void:
 	if body is Player:
-		print("UWU")
 		change_level = true
-		next_level = 0 #TODO: agregar nivel final
+		next_level = 3 #TODO: agregar nivel final
