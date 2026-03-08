@@ -46,7 +46,7 @@ func _on_chica_que_baila_interact() -> void:
 	if interaccionesCQB%3 == 0:
 		chica.say("bailando bailando")
 	elif interaccionesCQB%3 == 1:
-		chica.say("amigos adios... adios...")
+		chica.say("amigos adiós... adiós...")
 	else:
 		chica.say("el silencio loco")
 	interaccionesCQB += 1
@@ -57,7 +57,7 @@ func _on_tocadiscos_interact() -> void:
 	if not $DialogueBox.begin_dialogue("tocadiscos"):
 		return
 	if not agarrasteElDisco:
-		pibe.say("oh un tocadiscos :O que retro")
+		pibe.say("oh un tocadiscos :O qué retro")
 	elif not pusisteElDisco:
 		$Tocadiscos/AnimatedSprite2D.play("playing")
 		chica.say("...")
@@ -81,7 +81,7 @@ func _on_cortina_y_cuadro_interact() -> void:
 		#$CortinaYCuadro/Area2D/CollisionShape2D.disabled = true
 		teAtropellaron = true
 	else:
-		pibe.say("que mierda fue eso")
+		pibe.say("qué mierda fue eso")
 	$DialogueBox.end_dialogue()
 
 
@@ -89,7 +89,7 @@ func _on_pishito_interact() -> void:
 	if not $DialogueBox.begin_dialogue("pishito"):
 		return
 	if not agarrasteLaChapa:
-		pibe.say("PISHITO 😍")
+		pibe.say("PISHITO :D")
 		$Pishito/AnimatedSprite2D.play("Bark")
 		perro.say("waf")
 		$DialogueBox.set_callable_on_queue_end(func (): $Pishito/AnimatedSprite2D.play("Idle"))
@@ -109,7 +109,7 @@ func _on_auto_roto_interact() -> void:
 		return
 	if not $DialogueBox.begin_dialogue("autoroto"):
 		return
-	pibe.say(":O se salió el cosito este de la rueda")
+	pibe.say(":O se salió el cosito éste de la rueda")
 	pibe.say("creo que este pishito quiere que se lo tire!")
 	agarrasteLaChapa = true
 	$DialogueBox.end_dialogue()

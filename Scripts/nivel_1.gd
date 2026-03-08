@@ -35,7 +35,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		if not $DialogueBox.begin_dialogue("enter_level"):
 			return
 		$Player.active = false
-		pibe.say("holiii, estoy en busqueda de dios >:)")
+		pibe.say("holiii, estoy en búsqueda de dios >:)")
 		pibe.say("él mismo me dijo que vive acá pero no sé qué onda")
 		pibe.say("es re raro este lugar...")
 		pibe.say("uh bancá...")
@@ -58,8 +58,8 @@ func _on_interactuable_interact() -> void:
 		return
 	$Player.active = false
 	if not hablaste_con_libreria:
-		orcnella.say("Que haces pibe, tenés un cigarro para convidar?")
-		pibe.say("disculpa no fumo")
+		orcnella.say("qué hacés pibe, tenés un cigarro para convidar?")
+		pibe.say("disculpá no fumo")
 	elif not hablaste_con_orcnella:
 		pibe.say("che el de la librería quiere que te vayas")
 		orcnella.say("decile a ese gil que si me convida un pucho me voy")
@@ -107,7 +107,7 @@ func _on_libreria_interact() -> void:
 		hablaste_con_libreria = true
 	elif not hablaste_con_orcnella:
 		var dialogueID := "libreria1"
-		librero.say("dale wachín, hace que se vaya", dialogueID)
+		librero.say("dale wachín, hacé que se vaya", dialogueID)
 	else:
 		var dialogueID := "libreria2"
 		pibe.say("dice la señora que si le das un cigarrillo se va", dialogueID)
@@ -143,7 +143,7 @@ func _on_manzana_interact() -> void:
 		orcnella.say("pero gracias tenía hambre")
 	else:
 		pibe.say("una suculenta manzana")
-		pibe.say("no tenés hambre.")
+		pibe.say("no tenés hambre")
 	$DialogueBox.end_dialogue()
 
 func _on_moneda_interact() -> void:
