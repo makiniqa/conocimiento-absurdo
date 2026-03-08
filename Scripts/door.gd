@@ -1,4 +1,4 @@
-extends Sprite2D
+extends AnimatedSprite2D
 class_name Door
 
 ## si la puerta se puede abrir
@@ -30,9 +30,16 @@ func interact() -> void:
 	pass
 
 func open():
-	if animationPlayer != null:
-		animationPlayer.play("open")
-	pass
+	play("open")
+
+	
+func _process(delta: float) -> void:
+	if animation == "open" and not is_playing():
+		$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
+		isOpen = true
+	if isInsideInteractRadius and isOpen:
+		entered.emit(self)
+		
 	
 func activate():
 	pass
@@ -49,7 +56,3 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	isInsideInteractRadius = false
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
-	isOpen = true

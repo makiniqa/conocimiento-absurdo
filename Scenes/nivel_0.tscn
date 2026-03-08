@@ -32,7 +32,7 @@ offset_right = 227.0
 offset_bottom = 237.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 72
-text = "jueguito uwu"
+text = "El pibe en busqueda de Dios"
 
 [node name="StartButton" type="MenuButton" parent="." unique_id=68554837]
 layout_mode = 1
@@ -53,7 +53,7 @@ theme_override_font_sizes/font_size = 40
 text = "Empezar"
 script = ExtResource("2_820xk")
 
-[node name="MenuButton2" type="MenuButton" parent="." unique_id=1354175658]
+[node name="QuitButton" type="MenuButton" parent="." unique_id=1354175658]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -69,6 +69,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.8745098, 0.1254902, 0.8745098, 1)
 theme_override_colors/font_hover_color = Color(0.8745098, 0.1254902, 0.6431373, 1)
 theme_override_font_sizes/font_size = 40
-text = "Cargar"
+text = "Salir"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="button_up" from="QuitButton" to="." method="_on_quit_button_button_up"]

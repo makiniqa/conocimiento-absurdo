@@ -135,6 +135,21 @@ terrain_set_0/terrain_1/name = "Terrain 1"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/1 = SubResource("TileSetAtlasSource_pot7g")
 
+[sub_resource type="Animation" id="Animation_sselb"]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_kkyht"]
 length = 0.001
 tracks/0/type = "value"
@@ -268,6 +283,18 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-80, 141)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../ColorRect2:color")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_qeet1"]
@@ -559,6 +586,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_amwks"]
 _data = {
+&"FadeOut": SubResource("Animation_sselb"),
 &"RESET": SubResource("Animation_kkyht"),
 &"TirarChapa": SubResource("Animation_qeet1"),
 &"aparecePerritoWaf": SubResource("Animation_pot7g"),
@@ -1084,6 +1112,14 @@ position = Vector2(87, -112)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Puerta/Salida" unique_id=1358078098]
 position = Vector2(-78.5, 87)
 shape = SubResource("RectangleShape2D_k6xhl")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=466262754]
+z_index = 1
+offset_left = -234.0
+offset_top = 54.0
+offset_right = 197.0
+offset_bottom = 328.0
+color = Color(0, 0, 0, 0)
 
 [connection signal="interact" from="ChicaQueBaila" to="." method="_on_chica_que_baila_interact"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

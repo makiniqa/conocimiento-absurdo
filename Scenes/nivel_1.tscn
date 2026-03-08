@@ -818,6 +818,7 @@ tile_set = SubResource("TileSet_3wii6")
 [node name="AnimatedGate" parent="." unique_id=2047117113 instance=ExtResource("5_hwnlj")]
 y_sort_enabled = true
 position = Vector2(-46, 0)
+scale = Vector2(1.75, 1.75)
 
 [node name="Player" parent="." unique_id=1915309905 instance=ExtResource("5_jmhww")]
 y_sort_enabled = true

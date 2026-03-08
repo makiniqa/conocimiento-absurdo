@@ -12,3 +12,7 @@ func getNextLevel() -> int:
 func _on_start_button_pressed() -> void:
 	change_level = true
 	next_level = 1
+
+
+func _on_quit_button_button_up() -> void:
+	get_tree().quit()

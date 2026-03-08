@@ -32,9 +32,14 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		$Puerta/Puerta2.play("open")
 		$Puerta/StaticBody2D/CollisionShape2D.disabled = true
 		$Puerta/Salida/CollisionShape2D.disabled = false
+	elif anim_name == "FadeOut":
+		change_level = true
+		next_level = 3 
 		
 var interaccionesCQB := 0
 func _on_chica_que_baila_interact() -> void:
+	if not $DialogueBox.begin_dialogue("bailando"):
+		return
 	if interaccionesCQB%3 == 0:
 		chica.say("bailando bailando")
 	elif interaccionesCQB%3 == 1:
@@ -42,9 +47,12 @@ func _on_chica_que_baila_interact() -> void:
 	else:
 		chica.say("el silencio loco")
 	interaccionesCQB += 1
+	$DialogueBox.end_dialogue()
 
 
 func _on_tocadiscos_interact() -> void:
+	if not $DialogueBox.begin_dialogue("tocadiscos"):
+		return
 	if not agarrasteElDisco:
 		pibe.say("oh un tocadiscos :O que retro")
 	else:
@@ -52,17 +60,24 @@ func _on_tocadiscos_interact() -> void:
 		chica.say("...")
 		chica.say("eeeee temazoooooo")
 		$DialogueBox.set_callable_on_queue_end(func (): $AnimationPlayer.play("chicaSeVa"))
+	$DialogueBox.end_dialogue()
 		
 
 func _on_cortina_y_cuadro_interact() -> void:
+	if not $DialogueBox.begin_dialogue("cuadrocortina"):
+		return
 	$Player.active = false
 	$AnimationPlayer.play("preatropellao")
 	pibe.say("che hay algo acá")
 	$CortinaYCuadro/AnimatedSprite2D.play("open")
 	$CortinaYCuadro/AnimatedSprite2D2.play("open")
+	$CortinaYCuadro/Area2D/CollisionShape2D.disabled = true
+	$DialogueBox.end_dialogue()
 
 
 func _on_pishito_interact() -> void:
+	if not $DialogueBox.begin_dialogue("pishito"):
+		return
 	if not agarrasteLaChapa:
 		pibe.say("PISHITO 😍")
 		$Pishito/AnimatedSprite2D.play("Bark")
@@ -77,24 +92,32 @@ func _on_pishito_interact() -> void:
 		pibe.say("gracias amigo, buen chico <3")
 		perro.say("waf! :3")
 		$Pishito/AnimatedSprite2D.play("Idle")
+	$DialogueBox.end_dialogue()
 
 func _on_auto_roto_interact() -> void:
+	if not $DialogueBox.begin_dialogue("autoroto"):
+		return
 	pibe.say(":O se salió el cosito este de la rueda")
 	pibe.say("creo que este pishito quiere que se lo tire!")
 	agarrasteLaChapa = true
+	$DialogueBox.end_dialogue()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
+	if not $DialogueBox.begin_dialogue("cuadro"):
+		return
 	pibe.say("omg un cuadro")
 	$DialogueBox.set_callable_on_queue_end(
 		func (): $CortinaYCuadro/PinturaAuto.play("default")
 		)
+	$DialogueBox.end_dialogue()
 
 func _on_pintura_auto_animation_finished() -> void:
+	if not $DialogueBox.begin_dialogue("atropellao"):
+		return
 	pibe.say("AAAAAAAAAAAA")
 	$AnimationPlayer.play("atropellao")
-
+	$DialogueBox.end_dialogue()
 
 func _on_salida_body_entered(body: Node2D) -> void:
 	if body is Player:
-		change_level = true
-		next_level = 3 #TODO: agregar nivel final
+		$AnimationPlayer.play("FadeOut")

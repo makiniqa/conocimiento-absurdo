@@ -113,7 +113,7 @@ func _on_libreria_interact() -> void:
 		librero.say("yo no fumo pero agarrate estos marcadores y hacele un \"cigarrillo\" a la señora", dialogueID)
 		librero.say("está lo suficientemente pasada de vino como para no darse cuenta", dialogueID)
 		personita_tiene_marcadores = true
-	$DialogueBox.end_dialogue("")
+	$DialogueBox.end_dialogue()
 
 
 func _on_vuvuzela_interact() -> void:
@@ -122,11 +122,11 @@ func _on_vuvuzela_interact() -> void:
 	$Player.active = false
 	if hablaste_con_orcnella and not puerta_desbloqueada:
 		$Vuvuzela.queue_free()
-		pibe.say("*hacés un montón de ruido*", "vuvuzela0")
-		pibe.say("pero la vieja no se inmuta", "vuvuzela0")
+		pibe.say("*hacés un montón de ruido*")
+		pibe.say("pero la vieja no se inmuta")
 	else:
-		pibe.say("una vuvuzela", "vuvuzela1")
-		pibe.say("cómo odiás estas vergas", "vuvuzela1")
+		pibe.say("una vuvuzela")
+		pibe.say("cómo odiás estas vergas")
 	$DialogueBox.end_dialogue()
 
 func _on_manzana_interact() -> void:
@@ -136,8 +136,8 @@ func _on_manzana_interact() -> void:
 	if hablaste_con_orcnella and not puerta_desbloqueada:
 		$Manzana.queue_free()
 		pibe.say("*le tirás una manzana en la cabeza a la vieja*")
-		orcnella.say("bueno tus modales no son los mejores pibe", "honk")
-		orcnella.say("pero gracias tenía hambre", "honk")
+		orcnella.say("bueno tus modales no son los mejores pibe")
+		orcnella.say("pero gracias tenía hambre")
 	else:
 		pibe.say("una suculenta manzana")
 		pibe.say("no tenés hambre.")
