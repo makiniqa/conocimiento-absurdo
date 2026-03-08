@@ -69,3 +69,4 @@ text_overrun_behavior = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1694669748]
 volume_db = -10.0
+bus = &"Voces"

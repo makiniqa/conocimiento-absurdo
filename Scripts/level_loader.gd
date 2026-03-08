@@ -4,8 +4,10 @@ var levels = []
 var current_level
 
 signal level_changed
+signal music_changed(stream)
 signal menu_enter
 signal menu_exit
+
 
 func _ready() -> void:
 	var levelRe := RegEx.create_from_string("nivel_[0-9]+\\.tscn")
@@ -16,6 +18,8 @@ func _ready() -> void:
 	
 	current_level = 0
 	add_child(load(levels[0]).instantiate())
+	var music = get_children(true)[0].music
+	music_changed.emit(music)
 	menu_enter.emit()
 
 func change_level(level) -> void:
@@ -29,6 +33,9 @@ func change_level(level) -> void:
 	current_level = level
 	add_child(load(levels[current_level]).instantiate())
 	level_changed.emit()
+	var music = get_children(true)[0].music
+	music_changed.emit(music)
+	
 	
 func _process(_delta: float) -> void:
 	for child in get_children(true):

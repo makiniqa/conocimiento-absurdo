@@ -12,6 +12,11 @@ offset_bottom = 40.0
 
 [node name="Level_Loader" parent="." unique_id=2094152714 instance=ExtResource("2_3dryh")]
 
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1553599321]
+autoplay = true
+bus = &"Music"
+
 [connection signal="level_changed" from="Level_Loader" to="." method="_on_level_loader_level_changed"]
 [connection signal="menu_enter" from="Level_Loader" to="." method="_on_level_loader_menu_enter"]
 [connection signal="menu_exit" from="Level_Loader" to="." method="_on_level_loader_menu_exit"]
+[connection signal="music_changed" from="Level_Loader" to="." method="_on_level_loader_music_changed"]

@@ -6,6 +6,7 @@ var hablaste_con_orcnella := false
 var personita_tiene_hojita := false
 var personita_tiene_marcadores := false
 var puerta_desbloqueada := false
+var music := preload("uid://xbanpo4nr1a3")
 
 var orcnella := Character.new("Orcnella", "ah")
 var librero := Character.new("Librero", "honk")
@@ -33,6 +34,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "enter_level":
 		if not $DialogueBox.begin_dialogue("enter_level"):
 			return
+		$Player.active = false
 		pibe.say("holiii, estoy en busqueda de dios >:)")
 		pibe.say("él mismo me dijo que vive acá pero no sé qué onda")
 		pibe.say("es re raro este lugar...")
@@ -44,6 +46,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		dios.say("MARCADOR.")
 		dios.say("...")
 		pibe.say("me pregunto qué significará esto :O")
+		$DialogueBox.set_callable_on_queue_end(func (): $Player.active = true)
 		$DialogueBox.end_dialogue()
 
 

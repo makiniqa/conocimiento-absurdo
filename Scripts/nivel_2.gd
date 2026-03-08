@@ -2,10 +2,13 @@ extends Level
 
 var chica := Character.new("Chica", "ah", DialogueBox.default_talking_speed*0.75)
 var perro := Character.new("Pishito", "bark")
+var music := preload("uid://csm64v3d16vfi")
 
 var agarrasteLaChapa := false
 var vinoElPerritoConELDisco := false
 var agarrasteElDisco := false
+var pusisteElDisco := false
+var teAtropellaron := false
 
 func _ready():
 	$Puerta/Salida/CollisionShape2D.disabled = true
@@ -55,23 +58,30 @@ func _on_tocadiscos_interact() -> void:
 		return
 	if not agarrasteElDisco:
 		pibe.say("oh un tocadiscos :O que retro")
-	else:
+	elif not pusisteElDisco:
 		$Tocadiscos/AnimatedSprite2D.play("playing")
 		chica.say("...")
 		chica.say("eeeee temazoooooo")
 		$DialogueBox.set_callable_on_queue_end(func (): $AnimationPlayer.play("chicaSeVa"))
+		pusisteElDisco = true
+	else:
+		pibe.say("... no está sonando nada o.O")
 	$DialogueBox.end_dialogue()
 		
 
 func _on_cortina_y_cuadro_interact() -> void:
 	if not $DialogueBox.begin_dialogue("cuadrocortina"):
 		return
-	$Player.active = false
-	$AnimationPlayer.play("preatropellao")
-	pibe.say("che hay algo acá")
-	$CortinaYCuadro/AnimatedSprite2D.play("open")
-	$CortinaYCuadro/AnimatedSprite2D2.play("open")
-	$CortinaYCuadro/Area2D/CollisionShape2D.disabled = true
+	if not teAtropellaron:
+		$Player.active = false
+		$AnimationPlayer.play("preatropellao")
+		pibe.say("che hay algo acá")
+		$CortinaYCuadro/AnimatedSprite2D.play("open")
+		$CortinaYCuadro/AnimatedSprite2D2.play("open")
+		#$CortinaYCuadro/Area2D/CollisionShape2D.disabled = true
+		teAtropellaron = true
+	else:
+		pibe.say("que mierda fue eso")
 	$DialogueBox.end_dialogue()
 
 
@@ -95,6 +105,8 @@ func _on_pishito_interact() -> void:
 	$DialogueBox.end_dialogue()
 
 func _on_auto_roto_interact() -> void:
+	if not $AutoRoto.visible:
+		return
 	if not $DialogueBox.begin_dialogue("autoroto"):
 		return
 	pibe.say(":O se salió el cosito este de la rueda")

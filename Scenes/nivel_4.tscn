@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://bv26g05v78qx3"]
+
+[ext_resource type="Script" uid="uid://b4h1sd2nkm0gw" path="res://Scripts/nivel_4.gd" id="1_5a4it"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pb1qq"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_u2mur"]
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_5a4it"]
+font_size = 30
+
+[sub_resource type="Animation" id="Animation_5a4it"]
+resource_name = "Creditos"
+length = 18.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nosotres:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cosas:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Assets:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10, 14),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect2:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 14, 18),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u2mur"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nosotres:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cosas:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Assets:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect2:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2mur"]
+_data = {
+&"Creditos": SubResource("Animation_5a4it"),
+&"RESET": SubResource("Animation_u2mur")
+}
+
+[node name="nivel_4" type="Control" unique_id=1816973133]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5a4it")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1113883587]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=831394243]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "El Pibe en busqueda de Dios"
+label_settings = SubResource("LabelSettings_pb1qq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Nosotres" type="Label" parent="." unique_id=603735910]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.5
+offset_top = -17.5
+offset_right = 315.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Creado por Mapacha y Makiniqa para la Game Jam Exactas :)"
+label_settings = SubResource("LabelSettings_u2mur")
+
+[node name="Cosas" type="Label" parent="." unique_id=156923873]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.5
+offset_top = -24.5
+offset_right = 224.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sprites por Temi y Makiniqa
+Programación y diseño por Mapacha y Makiniqa"
+label_settings = SubResource("LabelSettings_5a4it")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Assets" type="Label" parent="." unique_id=1071316522]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.5
+offset_top = -24.5
+offset_right = 224.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Asset packs utilizados:
+Musica por Clement Panchout – www.clementpanchout.com
+Sprout Lands por Cup Nooble – https://cupnooble.itch.io/"
+label_settings = SubResource("LabelSettings_5a4it")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=339531810]
+libraries/ = SubResource("AnimationLibrary_u2mur")
+autoplay = &"Creditos"
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=426691920]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

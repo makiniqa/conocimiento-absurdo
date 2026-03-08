@@ -1,6 +1,7 @@
 extends Level
 
 var tecnico := Character.new("Tecnico", "honk")
+var music = null
 
 func _ready():
 	Character.dialogueBox = $DialogueBox
@@ -79,4 +80,4 @@ func _on_animation_player_animation_started(anim_name: StringName) -> void:
 
 func end_level():
 	change_level = true
-	next_level = 0 #TODO: agregar nivel final
+	next_level = 4 
